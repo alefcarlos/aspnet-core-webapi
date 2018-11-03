@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="T:API.Controllers.v1.SignInController">
+            <summary>
+            RESTfull services for SignIn
+            </summary>
+        </member>
+        <member name="M:API.Controllers.v1.SignInController.#ctor(Application.Services.ISignInServices)">
+            <summary>
+            Controller
+            </summary>
+            <param name="services">Dependência do serviço</param>
+        </member>
+        <member name="M:API.Controllers.v1.SignInController.Post(Application.Contracts.SignIn.SignInPostRequest)">
+            <summary>
+            Tenta logar um usuário a partir de e-mail e senha
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Controllers.v1.SingUpController">
+            <summary>
+            RESTfull services for SignUp
+            </summary>
+        </member>
+        <member name="M:API.Controllers.v1.SingUpController.Post(Application.Contracts.SignUp.SignUpPostRequest)">
+            <summary>
+            Cria um novo usuário
+            </summary>
+            <param name="request">Dados do usuário</param>
+        </member>
+        <member name="T:API.Controllers.ValuesController">
+            <summary>
+            RESTfull services for Caregivers
+            </summary>
+        </member>
+    </members>
+</doc>
