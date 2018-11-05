@@ -5,6 +5,6 @@ namespace Application.Services
 {
     public interface ISignInServices
     {
-        ServicesResult Login(SignInPostRequest request);
+        ServicesResult GenerateToken(SignInPostRequest request);
     }
 }

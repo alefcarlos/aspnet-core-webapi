@@ -1,7 +1,5 @@
 ﻿using Clinfy.Application.Data.MongoDB.Entities;
 using Framework.Data.MongoDB;
-using Framework.Data.MongoDB.Repository;
-using MongoDB.Driver;
 
 namespace Clinfy.Application.Data.MongoDB.Repositories
 {
@@ -10,5 +8,17 @@ namespace Clinfy.Application.Data.MongoDB.Repositories
         public UserRepository(MongoDBConnectionWraper connection) : base(connection)
         {
         }
+
+        /// <summary>
+        /// Obtém um determinado usuário por e-mail
+        /// </summary>
+        /// <param name="email"></param>
+        public UserEntity GetByEmail(string email) => ReadFirstOrDefault(x => x.Email.Equals(email));
+
+        /// <summary>
+        /// Obtém um determinado usuário por refreshToken
+        /// </summary>
+        /// <param name="token">RefreshToken do usuário.</param>
+        public UserEntity GetByRefreshToken(string token) => ReadFirstOrDefault(x => x.RefreshToken.Equals(token));
     }
 }

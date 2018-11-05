@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace Framework.Data.MongoDB.Entities
+namespace Framework.Data.MongoDB
 {
     public class MongoEntityBase
     {

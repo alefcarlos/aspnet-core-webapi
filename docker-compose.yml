@@ -1,0 +1,15 @@
+version: '3'
+services:
+  clinfy-webapi:
+    build: .
+    ports:
+     - "8181:80"
+    links:
+        - mongodb
+    depends_on:
+        - mongodb
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    ports:
+      - 27017:27017

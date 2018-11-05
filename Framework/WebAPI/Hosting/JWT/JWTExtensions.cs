@@ -17,7 +17,7 @@ namespace Framework.WebAPI.Hosting.JWT
             {
                 Audience = CommonHelpers.GetValueFromEnv<string>("JWT_AUD"),
                 Seconds = CommonHelpers.GetValueFromEnv<int>("JWT_EXPIRATION"),
-                Issuer = CommonHelpers.GetValueFromEnv<string>("JWT_ISS"),
+                Issuer = CommonHelpers.GetValueFromEnv<string>("JWT_ISS")
             };
 
             services.AddSingleton(tokenConfigurations);

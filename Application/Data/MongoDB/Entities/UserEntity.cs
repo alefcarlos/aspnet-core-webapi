@@ -1,6 +1,6 @@
 ﻿using Application.Contracts.SignUp;
 using Application.Shared.Enum;
-using Framework.Data.MongoDB.Entities;
+using Framework.Data.MongoDB;
 using System;
 
 namespace Clinfy.Application.Data.MongoDB.Entities
@@ -40,5 +40,10 @@ namespace Clinfy.Application.Data.MongoDB.Entities
         /// Senha do usuário
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// Token a ser utilizado para renovar sessão
+        /// </summary>
+        public string RefreshToken { get; set; }
     }
 }

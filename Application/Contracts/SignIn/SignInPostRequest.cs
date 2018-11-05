@@ -25,5 +25,10 @@ namespace Application.Contracts.SignIn
         /// refresh_token - Gera um novo token através de um refresh_token
         /// </summary>
         public string GrantType { get; set; }
+
+        /// <summary>
+        /// Refresh token para tentar ser revalidado
+        /// </summary>
+        public string RefreshToken { get; set; }
     }
 }

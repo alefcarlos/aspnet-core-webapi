@@ -1,11 +1,10 @@
-﻿using Framework.Data.MongoDB.Entities;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Framework.Data.MongoDB.Repository
+namespace Framework.Data.MongoDB
 {
     public class MongoRepositoryBase<T> : IMongoRepositoryBase<T> where T : MongoEntityBase
     {

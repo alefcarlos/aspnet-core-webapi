@@ -39,7 +39,7 @@ namespace API.Controllers.v1
         [SwaggerResponse((int)HttpStatusCode.Conflict)]
         public IActionResult Post([FromBody]SignInPostRequest request)
         {
-            var result = _services.Login(request);
+            var result = _services.GenerateToken(request);
 
             return result.ParseResult();
         }

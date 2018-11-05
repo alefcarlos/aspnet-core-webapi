@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace Framework.WebAPI.Hosting
 {
@@ -16,7 +17,8 @@ namespace Framework.WebAPI.Hosting
     {
         public BaseStartup(IConfiguration configuration)
         {
-            DotEnv.Config();
+            if (File.Exists(".env"))
+                DotEnv.Config();
 
             Configuration = configuration;
         }
