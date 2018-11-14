@@ -9,8 +9,9 @@ namespace Application.Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ISignInServices, SignInServices>();
-            services.AddScoped<ISignUpServices, SignUpServices>();
+            services.AddSingleton<ISignInServices, SignInServices>();
+            services.AddSingleton<ISignUpServices, SignUpServices>();
+            services.AddSingleton<IProfileServices, ProfileServices>();
 
             return services;
         }

@@ -4,6 +4,17 @@
         <name>API</name>
     </assembly>
     <members>
+        <member name="T:API.Controllers.v1.ProfileController">
+            <summary>
+            RESTfull services for User profile
+            </summary>
+        </member>
+        <member name="M:API.Controllers.v1.ProfileController.#ctor(Application.Services.IProfileServices)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="services"></param>
+        </member>
         <member name="T:API.Controllers.v1.SignInController">
             <summary>
             RESTfull services for SignIn

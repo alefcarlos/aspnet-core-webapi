@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using Framework.WebAPI.Documetation;
+using Framework.WebAPI.Hosting.Formatters;
 using Framework.WebAPI.Hosting.JWT;
 using Framework.WebAPI.Hosting.Middlewares;
 using Framework.WebAPI.Versioning;
@@ -30,7 +31,8 @@ namespace Framework.WebAPI.Hosting
         {
             services.AddSecurity();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddApiVersion();
             services.AddDocumentation();
