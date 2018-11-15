@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 namespace Framework.WebAPI.Hosting.Formatters
 {
     /// <summary>
-    /// Formatter that allows content of type image/png.  Allows for a single input parameter
+    /// Formatter that allows content of type image/*.  Allows for a single input parameter
     /// in the form of:
     /// 
-    /// public string RawString([FromBody] string data)
+    /// public string RawString([FromBody] byte[] data)
     /// </summary>
     public class ImageRawRequestBodyFormatter : InputFormatter
     {
         public ImageRawRequestBodyFormatter()
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("image/png"));
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue("image/*"));
         }
 
 
@@ -41,7 +41,7 @@ namespace Framework.WebAPI.Hosting.Formatters
             if (lenght > 2097152)
                 return false;
 
-            if (string.IsNullOrEmpty(contentType) || contentType == "image/png")
+            if (contentType.StartsWith("image/"))
                 return true;
 
             return false;
@@ -57,16 +57,15 @@ namespace Framework.WebAPI.Hosting.Formatters
             var request = context.HttpContext.Request;
             var contentType = context.HttpContext.Request.ContentType;
 
-            if (contentType == "image/png")
-            {
-                using (var reader = new StreamReader(request.Body))
-                {
-                    var content = Convert.FromBase64String(await reader.ReadToEndAsync());
-                    return await InputFormatterResult.SuccessAsync(content);
-                }
-            }
+            if (!contentType.StartsWith("image/"))
+                return await InputFormatterResult.FailureAsync();
 
-            return await InputFormatterResult.FailureAsync();
+            using (var reader = new StreamReader(request.Body))
+            {
+                var base64string = await reader.ReadToEndAsync();
+                var content = Convert.FromBase64String(base64string);
+                return await InputFormatterResult.SuccessAsync(content);
+            }
         }
     }
 }

@@ -42,33 +42,12 @@ namespace Framework.WebAPI.Hosting.Middlewares
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception Caught by HttpExceptionMiddleware:");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine("----- END EXCEPTION -----");
+                _logger.LogError(ex, "HttpExceptionMiddleware: Erro inexperado");
 
-                var log = new
-                {
-                    IP = context.Connection.RemoteIpAddress != null ? context.Connection.RemoteIpAddress.ToString() : string.Empty,
-                    ex.Message,
-                    ex.StackTrace
-                };
-
-                _logger.LogError("{@log}", log);
-
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                var result = JsonConvert.SerializeObject(new { message = "Infelizmente ocorreu um erro não tratado, entre em contato com os desenolvedores" });
                 context.Response.ContentType = "application/json";
-
-                var reponseError = new NotOkDefaultReponse
-                {
-                    Message = "Infelizmente ocorreu um erro não tratado, entre em contato com os desenolvedores"
-                };
-
-                var response = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(reponseError));
-
-                await context.Response.Body.WriteAsync(response, 0, response.Length);
-
-                await context.Response.WriteAsync(string.Empty).ConfigureAwait(false);
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError; ;
+                await context.Response.WriteAsync(result);
             }
         }
     }
