@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using Framework.WebAPI.Documetation;
+using Framework.WebAPI.Hosting.Cors;
 using Framework.WebAPI.Hosting.Formatters;
 using Framework.WebAPI.Hosting.JWT;
 using Framework.WebAPI.Hosting.Middlewares;
@@ -31,12 +32,15 @@ namespace Framework.WebAPI.Hosting
         {
             services.AddSecurity();
 
+            services.AddCustomCors();
+
             services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddApiVersion();
             services.AddDocumentation();
 
+            
             AfterConfigureServices(services);
         }
 
@@ -48,6 +52,8 @@ namespace Framework.WebAPI.Hosting
         {
 
             BeforeConfigureAppMVC(app, env);
+
+            app.UseCustomCors();
 
             app.UseMiddleware<HttpExceptionMiddleware>()
                 .UseMvc();
