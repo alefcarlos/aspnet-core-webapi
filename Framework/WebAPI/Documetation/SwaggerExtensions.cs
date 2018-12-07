@@ -20,6 +20,7 @@ namespace Framework.WebAPI.Documetation
                     options.OperationFilter<CustomConfigurationOperationFilter>();
                     options.OperationFilter<AddFileParamTypesOperationFilter>();
                     options.OperationFilter<AddResponseHeadersFilter>(); // [SwaggerResponseHeader]
+                    options.DescribeAllParametersInCamelCase();
 
                     // resolve the IApiVersionDescriptionProvider service
                     // note: that we have to build a temporary service provider here because one has not been created yet
@@ -34,6 +35,9 @@ namespace Framework.WebAPI.Documetation
 
                     // add a custom operation filter which sets default values
                     options.OperationFilter<SwaggerDefaultValues>();
+
+
+                    options.DocumentFilter<LowercaseDocumentFilter>();
 
                     // integrate xml comments
                     options.IncludeXmlComments(XmlCommentsFilePath);

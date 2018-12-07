@@ -11,7 +11,7 @@ namespace API.Controllers.v1
     /// </summary>
     [Authorize("Bearer")]
     [ApiVersion("1.0")]
-    [Route("api/v{api-version:apiVersion}/profile")]
+    [Route("api/v{api-version:apiVersion}/[controller]")]
     [ApiController]
     public class ProfileController : BaseController
     {
