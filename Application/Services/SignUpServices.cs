@@ -21,13 +21,6 @@ namespace Application.Services
 
         public ServicesResult Post(SignUpPostRequest request)
         {
-            //Validar request
-            var validator = new SignUpPostRequestValidator();
-            var validatorResult = validator.Validate(request);
-
-            if (!validatorResult.IsValid)
-                return BadRequest(validatorResult.Errors.First().ErrorMessage);
-
             //Validar se usuário existe na base
             //Persistir usuário na base
             var entity = new UserEntity(request);

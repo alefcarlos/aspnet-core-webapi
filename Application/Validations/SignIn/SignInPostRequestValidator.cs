@@ -1,14 +1,12 @@
 ﻿using Application.Contracts.SignIn;
 using FluentValidation;
 
-namespace Clinfy.Application.Validations.SignIn
+namespace Application.Validations.SignIn
 {
     public class SignInPostRequestValidator : AbstractValidator<SignInPostRequest>
     {
         public SignInPostRequestValidator()
         {
-            CascadeMode = CascadeMode.StopOnFirstFailure;
-
             //Validar GrantType
             RuleFor(x => x.GrantType)
                 .Must(ValidGrantType)

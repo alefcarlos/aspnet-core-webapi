@@ -1,4 +1,5 @@
 ﻿using Application.Services;
+using Application.Validations;
 using Clinfy.Application.Data.MongoDB;
 using Framework.Data.MongoDB;
 using Framework.WebAPI.Hosting;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Clinfy
+namespace API
 {
     public class Startup : BaseStartup
     {
@@ -17,6 +18,9 @@ namespace Clinfy
 
         public override void AfterConfigureServices(IServiceCollection services)
         {
+            //Adicioando as validações
+            services.AddValidators();
+
             //Services
             services.AddServices();
 

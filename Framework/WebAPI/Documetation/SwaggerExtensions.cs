@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.Filters;
 using Microsoft.Extensions.PlatformAbstractions;
+using Swashbuckle.AspNetCore.Filters;
+using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 
 namespace Framework.WebAPI.Documetation

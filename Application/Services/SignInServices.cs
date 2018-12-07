@@ -1,7 +1,7 @@
 ﻿using Application.Contracts.SignIn;
+using Application.Validations.SignIn;
 using Clinfy.Application.Data.MongoDB.Entities;
 using Clinfy.Application.Data.MongoDB.Repositories;
-using Clinfy.Application.Validations.SignIn;
 using Framework.Services;
 using Framework.WebAPI.Hosting.JWT;
 using Microsoft.IdentityModel.Tokens;
@@ -9,7 +9,6 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Principal;
 
 namespace Application.Services
 {
@@ -31,12 +30,6 @@ namespace Application.Services
 
         public ServicesResult GenerateToken(SignInPostRequest request)
         {
-            //Validar request
-            var validator = new SignInPostRequestValidator();
-            var validatorResult = validator.Validate(request);
-            if (!validatorResult.IsValid)
-                return BadRequest(validatorResult.Errors.First().ErrorMessage);
-
             UserEntity userEntity;
 
             if (request.GrantType == "refresh_token")

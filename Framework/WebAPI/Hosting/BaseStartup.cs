@@ -1,4 +1,5 @@
 ﻿using dotenv.net;
+using FluentValidation.AspNetCore;
 using Framework.WebAPI.Documetation;
 using Framework.WebAPI.HealthCheck;
 using Framework.WebAPI.Hosting.Cors;
@@ -36,13 +37,15 @@ namespace Framework.WebAPI.Hosting
             services.AddCustomCors();
 
             services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddFluentValidation();
+                //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
             services.AddApiVersion();
             services.AddDocumentation();
 
             services.AddHealthCheck();
-            
+
             AfterConfigureServices(services);
         }
 

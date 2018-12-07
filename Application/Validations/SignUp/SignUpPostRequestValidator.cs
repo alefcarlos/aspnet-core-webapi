@@ -8,8 +8,6 @@ namespace Application.Validations.SignUp
     {
         public SignUpPostRequestValidator()
         {
-            CascadeMode = CascadeMode.StopOnFirstFailure;
-
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .WithMessage("Nome completo é obrigatóio");

@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Shared;
 using Application.Shared.Enum;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Contracts.SignUp
 {
