@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.2-sdk as builder
 COPY . /
-WORKDIR /API
+WORKDIR /Demo.API
 RUN dotnet restore --no-cache
 RUN dotnet publish --output /app/ -c Release --no-restore
 
