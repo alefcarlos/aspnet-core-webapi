@@ -8,6 +8,7 @@ namespace Demo.Application.Data.MongoDB
         public static IServiceCollection AddMongoRepositories(this IServiceCollection services)
         {
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<ICharacterRepository, CharacterRepository>();
 
             return services;
         }

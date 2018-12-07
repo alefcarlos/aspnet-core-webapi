@@ -1,8 +1,10 @@
 ﻿using Demo.Application.Data.MongoDB;
+using Demo.Application.GraphQL;
 using Demo.Application.Services;
 using Demo.Application.Validations;
 using Framework.Data.MongoDB;
 using Framework.WebAPI.Hosting;
+using GraphiQl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +29,9 @@ namespace Demo.API
             //Repositories
             services.AddMongoDB();
             services.AddMongoRepositories();
+
+            //GraphQL
+            services.AddGraphQLModels();
         }
 
         public override void BeforeConfigureAppMVC(IApplicationBuilder app, IHostingEnvironment env)
@@ -35,6 +40,8 @@ namespace Demo.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseGraphiQl();
         }
     }
 }

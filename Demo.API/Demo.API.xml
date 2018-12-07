@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Demo.API</name>
+    </assembly>
+    <members>
+        <member name="T:Demo.API.Controllers.v1.ProfileController">
+            <summary>
+            RESTfull services for User profile
+            </summary>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.ProfileController.#ctor(Demo.Application.Services.IProfileServices)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:Demo.API.Controllers.v1.SignInController">
+            <summary>
+            RESTfull services for SignIn
+            </summary>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.SignInController.#ctor(Demo.Application.Services.ISignInServices)">
+            <summary>
+            Controller
+            </summary>
+            <param name="services">Dependência do serviço</param>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.SignInController.Post(Demo.Application.Contracts.SignIn.SignInPostRequest)">
+            <summary>
+            Tenta logar um usuário a partir de e-mail e senha
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Demo.API.Controllers.v1.SingUpController">
+            <summary>
+            RESTfull services for SignUp
+            </summary>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.SingUpController.Post(Demo.Application.Contracts.SignUp.SignUpPostRequest)">
+            <summary>
+            Cria um novo usuário
+            </summary>
+            <param name="request">Dados do usuário</param>
+        </member>
+        <member name="T:Demo.API.Controllers.ValuesController">
+            <summary>
+            RESTfull services for Caregivers
+            </summary>
+        </member>
+    </members>
+</doc>

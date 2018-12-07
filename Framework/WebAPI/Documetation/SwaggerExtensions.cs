@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.IO;
 
 namespace Framework.WebAPI.Documetation
@@ -40,8 +41,7 @@ namespace Framework.WebAPI.Documetation
                     options.DocumentFilter<LowercaseDocumentFilter>();
 
                     // integrate xml comments
-                    options.IncludeXmlComments(XmlCommentsFilePath);
-                    options.IncludeXmlComments(ApplicationXmlCommentsFilePath);
+                    IncludeXMLS(options);
                 });
 
             return services;
@@ -86,22 +86,15 @@ namespace Framework.WebAPI.Documetation
             return info;
         }
 
-        static string XmlCommentsFilePath
+        private static void IncludeXMLS(SwaggerGenOptions options)
         {
-            get
-            {
-                var app = PlatformServices.Default.Application;
-                return Path.Combine(app.ApplicationBasePath, app.ApplicationName + ".xml");
-            }
-        }
+            var app = PlatformServices.Default.Application;
+            var path = app.ApplicationBasePath;
 
-        static string ApplicationXmlCommentsFilePath
-        {
-            get
-            {
-                var app = PlatformServices.Default.Application;
-                return Path.Combine(app.ApplicationBasePath, "Application.xml");
-            }
+            var files = Directory.GetFiles(path, "*.xml");
+            foreach (var item in files)
+                options.IncludeXmlComments(item);
+
         }
     }
 }

@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Demo.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Demo.Application.Contracts.Shared.AddressRequest">
+            <summary>
+            Contrato de request comum para informação de endereço
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.PostalCode">
+            <summary>
+            CEP
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.Street">
+            <summary>
+            Nome da rua
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.Number">
+            <summary>
+            Número da casa
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.AdditionalInformations">
+            <summary>
+            Informações complementares
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.District">
+            <summary>
+            Nome do bairro
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.State">
+            <summary>
+            Sigla do estado
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.Shared.AddressRequest.Country">
+            <summary>
+            Nome do país
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Contracts.SignIn.SignInPostRequest">
+            <summary>
+            Contrato de criação de usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignIn.SignInPostRequest.Email">
+            <summary>
+            E-mail do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignIn.SignInPostRequest.Password">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignIn.SignInPostRequest.GrantType">
+            <summary>
+            Nível de obtenção de token
+            password - Gerar um novo token
+            refresh_token - Gera um novo token através de um refresh_token
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignIn.SignInPostRequest.RefreshToken">
+            <summary>
+            Refresh token para tentar ser revalidado
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Contracts.SignUp.SignUpPostRequest">
+            <summary>
+            Contrato de criação de usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.Name">
+            <summary>
+            Nome completo do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.BornDate">
+            <summary>
+            Data de nascimento
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.Gender">
+            <summary>
+            Sexo do cliente
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.Address">
+            <summary>
+            Endereço completo do cliente
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.Email">
+            <summary>
+            E-mail do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.Password">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Contracts.SignUp.SignUpPostRequest.ConfirmPassword">
+            <summary>
+            Confirmação de senha do usuário
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Data.MongoDB.Entities.CharacterEntity">
+            <summary>
+            Entidade de personagem
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.CharacterEntity.Name">
+            <summary>
+            Nome do personagem
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.CharacterEntity.BirthDate">
+            <summary>
+            Data de nascimento
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.Name">
+            <summary>
+            Nome completo do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.BornDate">
+            <summary>
+            Data de nascimento
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.Gender">
+            <summary>
+            Sexo do cliente
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.Email">
+            <summary>
+            E-mail do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.Password">
+            <summary>
+            Senha do usuário
+            </summary>
+        </member>
+        <member name="P:Demo.Application.Data.MongoDB.Entities.UserEntity.RefreshToken">
+            <summary>
+            Token a ser utilizado para renovar sessão
+            </summary>
+        </member>
+        <member name="M:Demo.Application.Data.MongoDB.Repositories.IUserRepository.GetByEmail(System.String)">
+            <summary>
+            Obtém um determinado usuário por e-mail
+            </summary>
+            <param name="email">E-mail do usuário.</param>
+        </member>
+        <member name="M:Demo.Application.Data.MongoDB.Repositories.IUserRepository.GetByRefreshToken(System.String)">
+            <summary>
+            Obtém um determinado usuário por refreshToken
+            </summary>
+            <param name="token">RefreshToken do usuário.</param>
+        </member>
+        <member name="M:Demo.Application.Data.MongoDB.Repositories.UserRepository.GetByEmail(System.String)">
+            <summary>
+            Obtém um determinado usuário por e-mail
+            </summary>
+            <param name="email"></param>
+        </member>
+        <member name="M:Demo.Application.Data.MongoDB.Repositories.UserRepository.GetByRefreshToken(System.String)">
+            <summary>
+            Obtém um determinado usuário por refreshToken
+            </summary>
+            <param name="token">RefreshToken do usuário.</param>
+        </member>
+        <member name="T:Demo.Application.GraphQL.Models.CharacterType">
+            <summary>
+            Tipo para a entidade <see cref="T:Demo.Application.Data.MongoDB.Entities.CharacterEntity"/>
+            </summary>
+        </member>
+        <member name="M:Demo.Application.GraphQL.Models.CharacterType.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Demo.Application.Services.IProfileServices.SaveUserPhotoAsync(System.String,System.Byte[])">
+            <summary>
+            Salvar imagem de perfil do usuário
+            </summary>
+            <param name="userId">Código do usuário</param>
+            <param name="image"></param>
+        </member>
+        <member name="T:Demo.Application.Services.ServicesDI">
+            <summary>
+            Reponsável por adicionar as injeções de dependências de serviços
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Services.SignInServices">
+            <summary>
+            Serivço SignIn
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Services.SignUpServices">
+            <summary>
+            Serivço SignIn
+            </summary>
+        </member>
+        <member name="T:Demo.Application.Shared.Enum.EGender">
+            <summary>
+            Enumerador de sexo 
+            </summary>
+        </member>
+        <member name="F:Demo.Application.Shared.Enum.EGender.Male">
+            <summary>
+            Masculino
+            </summary>
+        </member>
+        <member name="F:Demo.Application.Shared.Enum.EGender.Female">
+            <summary>
+            Feminino
+            </summary>
+        </member>
+    </members>
+</doc>

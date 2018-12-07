@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\repos\aspnet-core-webapi\Application\Application.xml</DocumentationFile>
+    <DocumentationFile>C:\projetos\aspnet-core-webapi\Demo.Application\Demo.Application.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <PackageReference Include="GraphQL" Version="2.4.0" />
   </ItemGroup>
 
 </Project>
