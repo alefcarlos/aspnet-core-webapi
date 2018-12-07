@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using Framework.WebAPI.Documetation;
+using Framework.WebAPI.HealthCheck;
 using Framework.WebAPI.Hosting.Cors;
 using Framework.WebAPI.Hosting.Formatters;
 using Framework.WebAPI.Hosting.JWT;
@@ -40,6 +41,7 @@ namespace Framework.WebAPI.Hosting
             services.AddApiVersion();
             services.AddDocumentation();
 
+            services.AddHealthCheck();
             
             AfterConfigureServices(services);
         }
@@ -59,6 +61,8 @@ namespace Framework.WebAPI.Hosting
                 .UseMvc();
 
             app.UseDocumentation(provider);
+
+            app.UseHealthCheck();
         }
 
         public abstract void BeforeConfigureAppMVC(IApplicationBuilder app, IHostingEnvironment env);
