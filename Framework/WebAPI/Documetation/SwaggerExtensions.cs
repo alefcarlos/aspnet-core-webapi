@@ -41,6 +41,7 @@ namespace Framework.WebAPI.Documetation
 
                     // integrate xml comments
                     options.IncludeXmlComments(XmlCommentsFilePath);
+                    options.IncludeXmlComments(ApplicationXmlCommentsFilePath);
                 });
 
             return services;
@@ -91,6 +92,15 @@ namespace Framework.WebAPI.Documetation
             {
                 var app = PlatformServices.Default.Application;
                 return Path.Combine(app.ApplicationBasePath, app.ApplicationName + ".xml");
+            }
+        }
+
+        static string ApplicationXmlCommentsFilePath
+        {
+            get
+            {
+                var app = PlatformServices.Default.Application;
+                return Path.Combine(app.ApplicationBasePath, "Application.xml");
             }
         }
     }
