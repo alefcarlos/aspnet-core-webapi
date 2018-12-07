@@ -4,13 +4,14 @@ Esse é um projeto para futuras consultas de técnicas empregadas com ASP.NET Co
 
 Técnicas
 
-* RESTfull
-* Autenticação JWT
-* Swagger
-* Versionamento de API
-* Docker
-* HealthCheck
-* FluentValidation
+- [x] RESTfull
+- [x] Autenticação JWT
+- [x] Swagger
+- [x] Versionamento de API
+- [x] Docker
+- [x] HealthCheck
+- [x] FluentValidation
+- [ ] GraphQL
 
 # Docker
 
