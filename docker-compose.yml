@@ -1,13 +1,20 @@
-version: '3'
+version: '3.7'
 services:
-  clinfy-webapi:
+  web:
     build: .
+    container_name: aspnet-core-webapi
     ports:
-     - "8181:80"
+      - "8181:80"
     links:
-        - mongodb
+      - mongodb
     depends_on:
-        - mongodb
+      - mongodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://aspnet-core-webapi/liveness"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
   mongodb:
     image: mongo
     container_name: "mongodb"

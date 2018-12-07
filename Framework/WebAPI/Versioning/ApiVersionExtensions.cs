@@ -17,25 +17,15 @@ namespace Framework.WebAPI.Versioning
                 o.SubstituteApiVersionInUrl = true;
             });
 
-            services.AddApiVersioning(o => o.ReportApiVersions = true);
+            services.AddApiVersioning(o =>
+            {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+            });
 
 
             return services;
         }
 
-        //public static IApplicationBuilder UseApiVersion(this IApplicationBuilder app)
-        //{
-        //    // Enable middleware to serve generated Swagger as a JSON endpoint.
-        //    app.UseSwagger();
-
-        //    // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-        //    // specifying the Swagger JSON endpoint.
-        //    app.UseSwaggerUI(c =>
-        //    {
-        //        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-        //    });
-
-        //    return app;
-        //}
     }
 }

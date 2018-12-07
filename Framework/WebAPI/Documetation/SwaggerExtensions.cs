@@ -65,7 +65,7 @@ namespace Framework.WebAPI.Documetation
         {
             var info = new Info()
             {
-                Title = $"Clinfy API {description.ApiVersion}",
+                Title = $"API {description.ApiVersion}",
                 Version = description.ApiVersion.ToString(),
                 //Description = "A sample application with Swagger, Swashbuckle, and API versioning.",
                 //Contact = new Contact() { Name = "Bill Mei", Email = "bill.mei@somewhere.com" },
