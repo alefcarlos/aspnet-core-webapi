@@ -10,6 +10,7 @@ Técnicas
 * Versionamento de API
 * Docker
 * HealthCheck
+* FluentValidation
 
 # Docker
 
