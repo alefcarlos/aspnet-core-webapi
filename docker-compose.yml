@@ -10,7 +10,7 @@ services:
     depends_on:
       - mongodb
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://aspnet-core-webapi/liveness"]
+      test: ["CMD", "curl", "-f", "http://aspnet-core-webapi/health/live"]
       interval: 30s
       timeout: 10s
       retries: 3
