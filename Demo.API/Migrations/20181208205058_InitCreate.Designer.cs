@@ -3,14 +3,16 @@ using System;
 using Demo.Application.Data.MySql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Demo.API.Migrations
 {
     [DbContext(typeof(DbzMySqlContext))]
-    partial class DbzMySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20181208205058_InitCreate")]
+    partial class InitCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,6 +1,6 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Data.MySql.Repositories;
-using Demo.Application.GraphQL.Types.Character;
+﻿using Demo.Application.GraphQL.Types.Character;
+using Demo.Application.GraphQL.Types.Character.Models;
+using Demo.Application.Services;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +8,7 @@ namespace Demo.Application.GraphQL.Types
 {
     public class DbzMutation : ObjectGraphType
     {
-        public DbzMutation([FromServices]ICharacterRepository repository)
+        public DbzMutation([FromServices]ICharacterGraphServices characterGraphServices)
         {
             Name = "CreateCharacterMutation";
 
@@ -19,8 +19,8 @@ namespace Demo.Application.GraphQL.Types
                 ),
                 resolve: context =>
                 {
-                    var player = context.GetArgument<CharacterEntity>("character");
-                    return repository.Create(player, true);
+                    var character = context.GetArgument<CharacterModel>("character");
+                    return characterGraphServices.Create(character);
                 });
         }
     }

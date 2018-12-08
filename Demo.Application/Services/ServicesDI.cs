@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Demo.Application.Services.GraphQL;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Demo.Application.Services
 {
@@ -12,6 +13,10 @@ namespace Demo.Application.Services
             services.AddSingleton<ISignInServices, SignInServices>();
             services.AddSingleton<ISignUpServices, SignUpServices>();
             services.AddSingleton<IProfileServices, ProfileServices>();
+
+
+            //GraphQL Services
+            services.AddGraphServices();
 
             return services;
         }

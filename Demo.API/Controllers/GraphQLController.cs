@@ -1,4 +1,5 @@
 ﻿using Demo.Application.Contracts.GraphQL;
+using Framework.WebAPI;
 using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace Demo.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class GraphQLController : Controller
+    public class GraphQLController : BaseController
     {
         private readonly IDocumentExecuter _documentExecuter;
         private readonly ISchema _schema;
@@ -23,13 +24,15 @@ namespace Demo.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLParameter query)
         {
-            if (query == null) { throw new ArgumentNullException(nameof(query)); }
+            if (query == null)
+            { throw new ArgumentNullException(nameof(query)); }
             var inputs = query.Variables.ToInputs();
             var executionOptions = new ExecutionOptions
             {
                 Schema = _schema,
                 Query = query.Query,
-                Inputs = inputs
+                Inputs = inputs,
+                UserContext = User
             };
 
             var result = await _documentExecuter.ExecuteAsync(executionOptions).ConfigureAwait(false);

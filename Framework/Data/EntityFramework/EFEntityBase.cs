@@ -12,6 +12,6 @@ namespace Framework.Data.EntityFramework
         /// <summary>
         /// Data de atualização do registro
         /// </summary>
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
     }
 }

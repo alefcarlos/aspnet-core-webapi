@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +21,7 @@ namespace Framework.Data.EntityFramework
 
         public T Create(T entity, bool save)
         {
+            entity.CreatedDate = DateTime.Now;
             _context.Set<T>().Add(entity);
 
             if (save)
@@ -40,14 +42,14 @@ namespace Framework.Data.EntityFramework
         public T Read(params object[] keys) => _context.Set<T>().Find(keys);
 
         public ICollection<T> Read() =>
-            Query().ToList();
-
+            Query().AsNoTracking().ToList();
 
         public IQueryable<T> Query() =>
-            _context.Set<T>();
+            _context.Set<T>().AsNoTracking();
 
         public void Update(T entity, bool save)
         {
+            entity.UpdatedDate = DateTime.Now;
             _context.Entry(entity).State = EntityState.Modified;
 
             if (save)

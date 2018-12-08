@@ -23,6 +23,7 @@ namespace Demo.Application.Data.MySql
             });
 
             services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IFamilyRepository, FamilyRepository>();
 
             return services;
         }

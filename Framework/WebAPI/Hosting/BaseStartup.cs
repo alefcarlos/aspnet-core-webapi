@@ -37,7 +37,7 @@ namespace Framework.WebAPI.Hosting
             services.AddCustomCors();
 
             services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation();
                 //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 

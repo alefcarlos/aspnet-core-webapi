@@ -1,5 +1,6 @@
-﻿using Framework.Data.EntityFramework;
-using System;
+﻿using Demo.Application.GraphQL.Types.Character.Models;
+using Framework.Data.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Demo.Application.Data.MySql.Entities
@@ -9,6 +10,18 @@ namespace Demo.Application.Data.MySql.Entities
     /// </summary>
     public class CharacterEntity : EFEntityBase
     {
+        public CharacterEntity()
+        {
+
+        }
+
+        public CharacterEntity(CharacterModel graphModel)
+        {
+            Name = graphModel.Name;
+            Kind = graphModel.Kind;
+            BirthDate = graphModel.BirthDate;
+        }
+
         /// <summary>
         /// ID do registro
         /// </summary>
@@ -23,12 +36,17 @@ namespace Demo.Application.Data.MySql.Entities
         /// <summary>
         /// Data de nascimento
         /// </summary>
-        public DateTime BirthDate { get; set; }
+        public string BirthDate { get; set; }
 
         /// <summary>
         /// Especie
         /// </summary>
         public ECharecterKind Kind { get; set; }
+
+        /// <summary>
+        /// Lista de parentes
+        /// </summary>
+        public List<FamilyEntity> Relatives { get; set; }
     }
 
     /// <summary>
