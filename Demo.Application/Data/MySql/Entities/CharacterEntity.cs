@@ -24,5 +24,26 @@ namespace Demo.Application.Data.MySql.Entities
         /// Data de nascimento
         /// </summary>
         public DateTime BirthDate { get; set; }
+
+        /// <summary>
+        /// Especie
+        /// </summary>
+        public ECharecterKind Kind { get; set; }
+    }
+
+    /// <summary>
+    /// Enumerador de especies
+    /// </summary>
+    public enum ECharecterKind
+    {
+        /// <summary>
+        /// Humano
+        /// </summary>
+        Human = 1,
+
+        /// <summary>
+        /// Sayajin
+        /// </summary>
+        Sayajin
     }
 }

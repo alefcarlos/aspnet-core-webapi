@@ -8,7 +8,8 @@ namespace Demo.Application.GraphQL.Types.Character
         {
             Name = "CharacterInput";
             Field<NonNullGraphType<StringGraphType>>("name");
-            Field<DateGraphType>("birthDate");
+            Field<NonNullGraphType<DateGraphType>>("birthDate");
+            Field<NonNullGraphType<CharacterKindEnum>>("kind");
         }
     }
 }

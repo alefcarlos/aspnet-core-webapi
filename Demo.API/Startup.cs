@@ -49,7 +49,7 @@ namespace Demo.API
                 app.UseHttpsRedirection();
             }
 
-            app.UseGraphiQl("/playground");
+            app.UseGraphiQl();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Demo.Application.GraphQL.Types.Character
         {
             services.AddSingleton<CharacterGraphType>();
             services.AddSingleton<CharacterGraphInputType>();
+            services.AddSingleton<CharacterKindEnum>();
 
             return services;
         }

@@ -13,11 +13,12 @@ namespace Demo.Application.GraphQL.Types.Character
         /// </summary>
         public CharacterGraphType()
         {
-            Name = "Personagem";
+            Name = "Character";
             Description = "Um personagem do mundo de Dragon Ball Z";
 
             Field(x => x.ID).Name("id");
             Field(x => x.Name).Description("Nome do personagem");
+            Field<CharacterKindEnum>("kind", "Raça do personagem");
 
             Field<StringGraphType>("birthDate", resolve: context => context.Source.BirthDate.ToShortDateString());
         }

@@ -12,7 +12,7 @@ namespace Demo.Application.GraphQL
         public static IServiceCollection AddGraphQLTypes(this IServiceCollection services)
         {
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-            services.AddSingleton<IDocumentWriter, DocumentWriter>();
+
             services.AddSingleton<DbzQuery>();
             services.AddSingleton<DbzMutation>();
             services.AddGraphQLCharacterModels();
