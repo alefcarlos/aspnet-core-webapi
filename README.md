@@ -17,6 +17,58 @@ Técnicas
     - [x] MySQL 
 	- [x] Migrations
 
+# GraphQL
+
+Para utilizar o GraphQL é necessário ter um token de autenticação Bearer.
+Acessando a url `https://localhost:5001/ui/playground` terá disponível uma UI para realizar alguns testes ;)
+
+Tipos disponívels:
+
+```graphql
+type Character {
+    id: int,
+    name: string!,
+    bithDate: string!,
+    relatives: [relative!],
+    kind: kind!
+}
+
+type Relative {
+    id: int!,
+    name: string,
+    bithDate: string!,
+    relatives: [relative!],
+    relativeKind: 
+}
+
+enum Kind {
+    HUMAN = 1,
+    SAYAJIN = 2
+}
+
+enum RelativeKind {
+    Brother = 1,
+    Sister = 2,
+    Son = 3,
+    Daugther = 4,
+    Spouse = 5,
+    Father = 6 ,
+    Mother = 7
+}
+```
+
+Queries disponíveis
+
+```graphql
+characters
+character(id: int)
+```
+
+Mutations disponíveis
+
+```
+createCharacter(character: Character)
+```
 # Docker
 
 O arquivo `Dockerfile` já contém as instruções necessárias para serem buildadas, vamos executar o comando abaixo para compilar uma imagem.

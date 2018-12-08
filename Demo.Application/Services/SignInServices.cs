@@ -58,7 +58,8 @@ namespace Demo.Application.Services
                 new Claim("user_id", userEntity.Id.ToString()),
                 new Claim(ClaimTypes.Email, userEntity.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                new Claim(ClaimTypes.Role, "admin")
+                new Claim(ClaimTypes.Role, "admin"),
+                new Claim(ClaimTypes.Role, "zika")
             };
 
             var identity = new ClaimsIdentity(claims, "Token");

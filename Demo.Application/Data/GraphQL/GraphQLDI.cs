@@ -60,9 +60,6 @@ namespace Demo.Application.GraphQL
 
         public static IApplicationBuilder AddGraphQLTypes(this IApplicationBuilder app)
         {
-            //// add http for Schema at default url /graphql
-            //app.UseGraphQL<ISchema>();
-
             // use graphql-playground at default url /ui/playground
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
