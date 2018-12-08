@@ -1,21 +1,21 @@
 ﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.GraphQL.Types.Character;
-using Demo.Application.GraphQL.Types.Family.Models;
+using Demo.Application.GraphQL.Types.Character.Models;
+using Demo.Application.GraphQL.Types.Family;
 using Demo.Application.Services;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Application.GraphQL.Types.Family
+namespace Demo.Application.GraphQL.Types.Character
 {
     /// <summary>
     /// Tipo para a entidade <see cref="CharacterEntity"/>
     /// </summary>
-    public class RelativeGraphType : ObjectGraphType<RelativeModel>
+    public class CharacterGraphType : ObjectGraphType<CharacterModel>
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public RelativeGraphType([FromServices]ICharacterGraphServices characterGraphServices)
+        public CharacterGraphType([FromServices]ICharacterGraphServices characterGraphServices)
         {
             Name = "Character";
             Description = "Um personagem do mundo de Dragon Ball Z";
@@ -24,8 +24,7 @@ namespace Demo.Application.GraphQL.Types.Family
             Field(x => x.Name).Description("Nome do personagem");
             Field<CharacterKindEnum>("kind", "Raça do personagem");
             Field(x => x.BirthDate).Description("Ano de nascimento do personagem");
-            Field<FamilyKindEnumType>("relativeKind", "Grau de parentesco");
-            Field<ListGraphType<RelativeGraphType>>("relatives", resolve: context => characterGraphServices.GetRelatives(context.Source.ID)).Description = "Lista de parentes";
+            Field<ListGraphType<RelativeGraphType>>("relatives", resolve: context => characterGraphServices.GetRelativesAsync(context.Source.ID)).Description = "Lista de parentes";
         }
     }
 }

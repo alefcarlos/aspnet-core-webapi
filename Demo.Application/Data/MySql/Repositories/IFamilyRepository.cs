@@ -1,6 +1,7 @@
 ﻿using Demo.Application.Data.MySql.Entities;
 using Framework.Data.EntityFramework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Demo.Application.Data.MySql.Repositories
 {
@@ -10,6 +11,6 @@ namespace Demo.Application.Data.MySql.Repositories
         /// Obtém todos os parentes de um determinado personagem
         /// </summary>
         /// <param name="characterId">ID do personagem.</param>
-        List<FamilyEntity> GetRelatives(int characterId);
+        Task<List<FamilyEntity>> GetRelativesAsync(int characterId);
     }
 }

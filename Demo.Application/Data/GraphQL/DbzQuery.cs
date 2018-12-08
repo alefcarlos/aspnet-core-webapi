@@ -12,11 +12,11 @@ namespace Demo.Application.GraphQL.Types
             Field<CharacterGraphType>(
                 "character",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
-                resolve: context => characterGraphServices.GetByID(context.GetArgument<int>("id")));
+                resolve: context => characterGraphServices.GetByIDAsync(context.GetArgument<int>("id")));
 
             Field<ListGraphType<CharacterGraphType>>(
                     "characters",
-                    resolve: context => characterGraphServices.GetAll());
+                    resolve: context => characterGraphServices.GetAllAsync());
         }
 
     }

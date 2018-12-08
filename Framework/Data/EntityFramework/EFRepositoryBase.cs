@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Framework.Data.EntityFramework
 {
@@ -14,15 +15,31 @@ namespace Framework.Data.EntityFramework
             _context = context;
         }
 
-        public void SaveChanges()
+        public int SaveChanges()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return _context.SaveChangesAsync();
         }
 
         public T Create(T entity, bool save)
         {
             entity.CreatedDate = DateTime.Now;
             _context.Set<T>().Add(entity);
+
+            if (save)
+                SaveChanges();
+
+            return entity;
+        }
+
+        public async Task<T> CreateAsync(T entity, bool save)
+        {
+            entity.CreatedDate = DateTime.Now;
+            await _context.Set<T>().AddAsync(entity);
 
             if (save)
                 SaveChanges();
@@ -41,8 +58,12 @@ namespace Framework.Data.EntityFramework
 
         public T Read(params object[] keys) => _context.Set<T>().Find(keys);
 
-        public ICollection<T> Read() =>
+        public Task<T> ReadAsync(params object[] keys) => _context.Set<T>().FindAsync(keys);
+
+        public List<T> Read() =>
             Query().AsNoTracking().ToList();
+
+        public Task<List<T>> ReadAsync() => Query().AsNoTracking().ToListAsync();
 
         public IQueryable<T> Query() =>
             _context.Set<T>().AsNoTracking();

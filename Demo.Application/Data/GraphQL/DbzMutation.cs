@@ -20,7 +20,7 @@ namespace Demo.Application.GraphQL.Types
                 resolve: context =>
                 {
                     var character = context.GetArgument<CharacterModel>("character");
-                    return characterGraphServices.Create(character);
+                    return characterGraphServices.CreateAsync(character);
                 });
         }
     }

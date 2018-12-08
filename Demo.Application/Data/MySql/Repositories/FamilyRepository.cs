@@ -3,6 +3,7 @@ using Framework.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Demo.Application.Data.MySql.Repositories
 {
@@ -12,12 +13,12 @@ namespace Demo.Application.Data.MySql.Repositories
         {
         }
 
-        public List<FamilyEntity> GetRelatives(int characterId)
+        public Task<List<FamilyEntity>> GetRelativesAsync(int characterId)
         {
             return Query()
                 .AsNoTracking()
                 .Include(x => x.Relative)
-                .Where(x => x.CharacterID == characterId).ToList();
+                .Where(x => x.CharacterID == characterId).ToListAsync();
         }
     }
 }

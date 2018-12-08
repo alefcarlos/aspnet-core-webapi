@@ -1,14 +1,15 @@
 ﻿using Demo.Application.GraphQL.Types.Character.Models;
 using Demo.Application.GraphQL.Types.Family.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Demo.Application.Services
 {
     public interface ICharacterGraphServices
     {
-        CharacterModel Create(CharacterModel model);
-        CharacterModel GetByID(int characterId);
-        List<CharacterModel> GetAll();
-        List<RelativeModel> GetRelatives(int characterId);
+        Task<CharacterModel> CreateAsync(CharacterModel model);
+        Task<CharacterModel> GetByIDAsync(int characterId);
+        Task<List<CharacterModel>> GetAllAsync();
+        Task<List<RelativeModel>> GetRelativesAsync(int characterId);
     }
 }

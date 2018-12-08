@@ -4,6 +4,7 @@ using Demo.Application.GraphQL.Types.Character.Models;
 using Demo.Application.GraphQL.Types.Family.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Demo.Application.Services.GraphQL
 {
@@ -18,25 +19,25 @@ namespace Demo.Application.Services.GraphQL
             _characterRepository = characterRepository;
         }
 
-        public CharacterModel Create(CharacterModel model)
+        public async Task<CharacterModel> CreateAsync(CharacterModel model)
         {
-            var result = _characterRepository.Create(new CharacterEntity(model), true);
+            var result = await _characterRepository.CreateAsync(new CharacterEntity(model), true);
             if (result == null)
                 return null;
 
             return new CharacterModel(result);
         }
 
-        public List<CharacterModel> GetAll()
+        public async Task<List<CharacterModel>> GetAllAsync()
         {
-            var characteres = _characterRepository.Read();
+            var characteres = await _characterRepository.ReadAsync();
 
             return CharacterModel.ParseEntities(characteres.ToArray());
         }
 
-        public CharacterModel GetByID(int characterId)
+        public async Task<CharacterModel> GetByIDAsync(int characterId)
         {
-            var character = _characterRepository.Read(characterId);
+            var character =  await _characterRepository.ReadAsync(characterId);
 
             if (character == null)
                 return null;
@@ -44,9 +45,9 @@ namespace Demo.Application.Services.GraphQL
             return new CharacterModel(character);
         }
 
-        public List<RelativeModel> GetRelatives(int characterId)
+        public async Task<List<RelativeModel>> GetRelativesAsync(int characterId)
         {
-            var relatives = _familyRepository.GetRelatives(characterId);
+            var relatives = await _familyRepository.GetRelativesAsync(characterId);
 
             return relatives.Select(x => new RelativeModel(x)).ToList();
         }
