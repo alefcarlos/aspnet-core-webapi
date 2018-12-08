@@ -1,24 +1,34 @@
-﻿using Demo.Application.Contracts.GraphQL;
+﻿using Demo.Application;
+using Demo.Application.Contracts.GraphQL;
 using Framework.WebAPI;
 using GraphQL;
 using GraphQL.Types;
+using GraphQL.Validation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Demo.API.Controllers
 {
+    [Authorize(JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
     [ApiController]
     public class GraphQLController : BaseController
     {
         private readonly IDocumentExecuter _documentExecuter;
         private readonly ISchema _schema;
+        IEnumerable<IValidationRule> _validationRules;
 
-        public GraphQLController(IDocumentExecuter documentExecuter, ISchema schema)
+        public GraphQLController(IDocumentExecuter documentExecuter, ISchema schema, IEnumerable<IValidationRule> validationRules)
         {
             _documentExecuter = documentExecuter;
             _schema = schema;
+            _validationRules = validationRules;
+
         }
 
         [HttpPost]
@@ -32,7 +42,11 @@ namespace Demo.API.Controllers
                 Schema = _schema,
                 Query = query.Query,
                 Inputs = inputs,
-                UserContext = User
+                UserContext = new GraphQLUserContext
+                {
+                    User = User
+                },
+                ValidationRules = DocumentValidator.CoreRules().Concat(_validationRules).ToList()
             };
 
             var result = await _documentExecuter.ExecuteAsync(executionOptions).ConfigureAwait(false);

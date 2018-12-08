@@ -1,5 +1,6 @@
 ﻿using Demo.Application.GraphQL.Types.Character;
 using Demo.Application.Services;
+using GraphQL.Authorization;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,10 @@ namespace Demo.Application.GraphQL.Types
 
             Field<ListGraphType<CharacterGraphType>>(
                     "characters",
-                    resolve: context => characterGraphServices.GetAllAsync());
+                    resolve: context =>
+                    {
+                        return characterGraphServices.GetAllAsync();
+                    });
         }
 
     }

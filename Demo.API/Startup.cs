@@ -5,7 +5,6 @@ using Demo.Application.Services;
 using Demo.Application.Validations;
 using Framework.Data.MongoDB;
 using Framework.WebAPI.Hosting;
-using GraphiQl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,7 +48,7 @@ namespace Demo.API
                 app.UseHttpsRedirection();
             }
 
-            app.UseGraphiQl();
+            app.AddGraphQLTypes();
         }
     }
 }

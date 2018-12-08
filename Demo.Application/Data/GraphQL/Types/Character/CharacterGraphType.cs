@@ -2,6 +2,7 @@
 using Demo.Application.GraphQL.Types.Character.Models;
 using Demo.Application.GraphQL.Types.Family;
 using Demo.Application.Services;
+using GraphQL.Authorization;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 

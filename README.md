@@ -12,7 +12,7 @@ Técnicas
 - [x] HealthCheck
 - [x] FluentValidation
 - [x] GraphQL
-    - Acessar url /graphql no browser
+    - Acessar a url /ui/playground no browser
 - [x] EF
     - [x] MySQL 
 	- [x] Migrations

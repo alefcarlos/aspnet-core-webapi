@@ -1,6 +1,7 @@
 ﻿using Demo.Application.GraphQL.Types.Character;
 using Demo.Application.GraphQL.Types.Character.Models;
 using Demo.Application.Services;
+using GraphQL.Authorization;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace Demo.Application.GraphQL.Types
     {
         public DbzMutation([FromServices]ICharacterGraphServices characterGraphServices)
         {
+            this.AuthorizeWith("AdminPolicy");
             Name = "CreateCharacterMutation";
 
             Field<CharacterGraphType>(
