@@ -12,9 +12,10 @@ Técnicas
 - [x] HealthCheck
 - [x] FluentValidation
 - [x] GraphQL
-    - Acessar via /playground
+    - Acessar url /graphql no browser
 - [x] EF
     - [x] MySQL 
+	- [x] Migrations
 
 # Docker
 
