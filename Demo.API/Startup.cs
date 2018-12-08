@@ -1,4 +1,5 @@
 ﻿using Demo.Application.Data.MongoDB;
+using Demo.Application.Data.MySql;
 using Demo.Application.GraphQL;
 using Demo.Application.Services;
 using Demo.Application.Validations;
@@ -30,8 +31,10 @@ namespace Demo.API
             services.AddMongoDB();
             services.AddMongoRepositories();
 
+            services.AddMySql();
+
             //GraphQL
-            services.AddGraphQLModels();
+            services.AddGraphQLTypes();
         }
 
         public override void BeforeConfigureAppMVC(IApplicationBuilder app, IHostingEnvironment env)
@@ -40,8 +43,13 @@ namespace Demo.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+                app.UseHttpsRedirection();
+            }
 
-            app.UseGraphiQl();
+            app.UseGraphiQl("/playground");
         }
     }
 }

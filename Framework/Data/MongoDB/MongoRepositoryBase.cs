@@ -252,6 +252,7 @@ namespace Framework.Data.MongoDB
             await _collection.DeleteOneAsync(p => p.Id.Equals(id));
         }
 
+
         /// <summary>
         /// Busca e retornar os dados de um registro a partir de um identificador único (Id).
         /// </summary>

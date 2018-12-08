@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\projetos\aspnet-core-webapi\Demo.API\Demo.API.xml</DocumentationFile>
+    <DocumentationFile>C:\repos\aspnet-core-webapi\Demo.API\Demo.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\repos\aspnet-core-webapi\API\API.xml</DocumentationFile>
+    <DocumentationFile>C:\repos\aspnet-core-webapi\Demo.API\Demo.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphiQL" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 

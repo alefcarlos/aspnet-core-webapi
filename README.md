@@ -11,7 +11,10 @@ Técnicas
 - [x] Docker
 - [x] HealthCheck
 - [x] FluentValidation
-- [ ] GraphQL
+- [x] GraphQL
+    - Acessar via /playground
+- [x] EF
+    - [x] MySQL 
 
 # Docker
 
