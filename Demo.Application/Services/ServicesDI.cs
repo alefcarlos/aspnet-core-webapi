@@ -1,7 +1,7 @@
-﻿using Demo.Application.Services.GraphQL;
+﻿using Demo.Core.Services.GraphQL;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     /// <summary>
     /// Reponsável por adicionar as injeções de dependências de serviços

@@ -1,9 +1,9 @@
-﻿using Demo.Application.Contracts.SignUp;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Contracts.SignUp;
+using Demo.Core.Shared.Enum;
 using Framework.Data.MongoDB;
 using System;
 
-namespace Demo.Application.Data.MongoDB.Entities
+namespace Demo.Core.Data.MongoDB.Entities
 {
     public class UserEntity : MongoEntityBase
     {

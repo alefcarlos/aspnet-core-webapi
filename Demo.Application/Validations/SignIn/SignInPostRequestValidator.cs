@@ -1,7 +1,7 @@
-﻿using Demo.Application.Contracts.SignIn;
+﻿using Demo.Core.Contracts.SignIn;
 using FluentValidation;
 
-namespace Demo.Application.Validations.SignIn
+namespace Demo.Core.Validations.SignIn
 {
     public class SignInPostRequestValidator : AbstractValidator<SignInPostRequest>
     {

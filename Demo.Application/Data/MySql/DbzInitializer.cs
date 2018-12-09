@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Shared.Enum;
 using System.Linq;
 
-namespace Demo.Application.Data.MySql
+namespace Demo.Core.Data.MySql
 {
     public static class DbzInitializer
     {

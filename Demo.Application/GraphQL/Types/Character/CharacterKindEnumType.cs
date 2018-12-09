@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Shared.Enum;
 using GraphQL.Types;
 
-namespace Demo.Application.GraphQL.Types.Character
+namespace Demo.Core.GraphQL.Types.Character
 {
     public class CharacterKindEnum : EnumerationGraphType<ECharecterKind>
     {

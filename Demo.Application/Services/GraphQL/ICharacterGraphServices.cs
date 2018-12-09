@@ -1,9 +1,9 @@
-﻿using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.GraphQL.Types.Family.Models;
+﻿using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.GraphQL.Types.Family.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services.GraphQL
+namespace Demo.Core.Services.GraphQL
 {
     public interface ICharacterGraphServices
     {

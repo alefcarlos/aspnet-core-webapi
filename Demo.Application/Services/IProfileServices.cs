@@ -1,7 +1,7 @@
 ﻿using Framework.Services;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     public interface IProfileServices
     {

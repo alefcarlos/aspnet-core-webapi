@@ -1,7 +1,7 @@
-﻿using Demo.Application.Contracts.SignIn;
+﻿using Demo.Core.Contracts.SignIn;
 using Framework.Services;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     public interface ISignInServices
     {

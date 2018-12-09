@@ -1,8 +1,8 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
+﻿using Demo.Core.Contracts.DragonBall.Request;
 using Framework.Services;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     public interface ICharacterServices
     {

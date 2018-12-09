@@ -1,11 +1,11 @@
-﻿using Demo.Application.Data.MySql.Repositories;
+﻿using Demo.Core.Data.MySql.Repositories;
 using Framework.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
 
-namespace Demo.Application.Data.MySql
+namespace Demo.Core.Data.MySql
 {
     public static class MySqlExtensions
     {

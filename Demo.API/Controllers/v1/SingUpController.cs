@@ -1,5 +1,5 @@
-﻿using Demo.Application.Contracts.SignUp;
-using Demo.Application.Services;
+﻿using Demo.Core.Contracts.SignUp;
+using Demo.Core.Services;
 using Framework.WebAPI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

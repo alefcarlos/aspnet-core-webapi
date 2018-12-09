@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.GraphQL.Types.Character
+namespace Demo.Core.GraphQL.Types.Character
 {
     public static class CharacterExtensions
     {

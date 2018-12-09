@@ -1,7 +1,7 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Shared.Enum;
 
-namespace Demo.Application.Contracts.DragonBall.Request
+namespace Demo.Core.Contracts.DragonBall.Request
 {
     public class DragonBallPostRequest
     {

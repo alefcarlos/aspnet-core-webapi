@@ -1,4 +1,4 @@
-﻿using Demo.Application.Data.MySql;
+﻿using Demo.Core.Data.MySql;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

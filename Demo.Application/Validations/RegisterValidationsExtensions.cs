@@ -1,13 +1,13 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
-using Demo.Application.Contracts.SignIn;
-using Demo.Application.Contracts.SignUp;
-using Demo.Application.Validations.DragonBall;
-using Demo.Application.Validations.SignIn;
-using Demo.Application.Validations.SignUp;
+﻿using Demo.Core.Contracts.DragonBall.Request;
+using Demo.Core.Contracts.SignIn;
+using Demo.Core.Contracts.SignUp;
+using Demo.Core.Validations.DragonBall;
+using Demo.Core.Validations.SignIn;
+using Demo.Core.Validations.SignUp;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.Validations
+namespace Demo.Core.Validations
 {
     public static class RegisterValidationsExtensions
     {

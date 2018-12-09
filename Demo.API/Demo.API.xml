@@ -9,13 +9,13 @@
             RESTFull services for Dragon Ball
             </summary>
         </member>
-        <member name="M:Demo.API.Controllers.v1.DragonBallController.Post(Demo.Application.Contracts.DragonBall.Request.DragonBallPostRequest)">
+        <member name="M:Demo.API.Controllers.v1.DragonBallController.Post(Demo.Core.Contracts.DragonBall.Request.DragonBallPostRequest)">
             <summary>
             Adiciona um novo personagem.
             </summary>
             <param name="request">Dados do personagem</param>
         </member>
-        <member name="M:Demo.API.Controllers.v1.DragonBallController.PostRelative(System.Int32,Demo.Application.Contracts.DragonBall.Request.DragonBallPostRelativeRequest)">
+        <member name="M:Demo.API.Controllers.v1.DragonBallController.PostRelative(System.Int32,Demo.Core.Contracts.DragonBall.Request.DragonBallPostRelativeRequest)">
             <summary>
             Adiciona um familiar a um determinado personagem
             </summary>
@@ -27,7 +27,7 @@
             RESTfull services for User profile
             </summary>
         </member>
-        <member name="M:Demo.API.Controllers.v1.ProfileController.#ctor(Demo.Application.Services.IProfileServices)">
+        <member name="M:Demo.API.Controllers.v1.ProfileController.#ctor(Demo.Core.Services.IProfileServices)">
             <summary>
             Constructor
             </summary>
@@ -38,13 +38,13 @@
             RESTfull services for SignIn
             </summary>
         </member>
-        <member name="M:Demo.API.Controllers.v1.SignInController.#ctor(Demo.Application.Services.ISignInServices)">
+        <member name="M:Demo.API.Controllers.v1.SignInController.#ctor(Demo.Core.Services.ISignInServices)">
             <summary>
             Controller
             </summary>
             <param name="services">Dependência do serviço</param>
         </member>
-        <member name="M:Demo.API.Controllers.v1.SignInController.Post(Demo.Application.Contracts.SignIn.SignInPostRequest)">
+        <member name="M:Demo.API.Controllers.v1.SignInController.Post(Demo.Core.Contracts.SignIn.SignInPostRequest)">
             <summary>
             Tenta logar um usuário a partir de e-mail e senha
             </summary>
@@ -56,7 +56,7 @@
             RESTfull services for SignUp
             </summary>
         </member>
-        <member name="M:Demo.API.Controllers.v1.SingUpController.Post(Demo.Application.Contracts.SignUp.SignUpPostRequest)">
+        <member name="M:Demo.API.Controllers.v1.SingUpController.Post(Demo.Core.Contracts.SignUp.SignUpPostRequest)">
             <summary>
             Cria um novo usuário
             </summary>

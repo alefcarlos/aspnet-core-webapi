@@ -1,11 +1,11 @@
-﻿using Demo.Application.Data.MySql.Entities;
+﻿using Demo.Core.Data.MySql.Entities;
 using Framework.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Data.MySql.Repositories
+namespace Demo.Core.Data.MySql.Repositories
 {
     public class FamilyRepository : EFRepositoryBase<FamilyEntity>, IFamilyRepository
     {

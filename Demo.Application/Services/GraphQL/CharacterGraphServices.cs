@@ -1,12 +1,12 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Data.MySql.Repositories;
-using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.GraphQL.Types.Family.Models;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Data.MySql.Repositories;
+using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.GraphQL.Types.Family.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services.GraphQL
+namespace Demo.Core.Services.GraphQL
 {
     public class CharacterGraphServices : ICharacterGraphServices
     {

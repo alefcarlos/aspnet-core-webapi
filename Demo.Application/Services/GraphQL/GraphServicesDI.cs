@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.Services.GraphQL
+namespace Demo.Core.Services.GraphQL
 {
     public static class GraphServicesDI
     {

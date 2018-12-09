@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.GraphQL.Types.Family
+namespace Demo.Core.GraphQL.Types.Family
 {
     public static class FamilyExtensions
     {

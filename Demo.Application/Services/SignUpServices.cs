@@ -1,9 +1,9 @@
-﻿using Demo.Application.Contracts.SignUp;
-using Demo.Application.Data.MongoDB.Entities;
-using Demo.Application.Data.MongoDB.Repositories;
+﻿using Demo.Core.Contracts.SignUp;
+using Demo.Core.Data.MongoDB.Entities;
+using Demo.Core.Data.MongoDB.Repositories;
 using Framework.Services;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     /// <summary>
     /// Serivço SignIn

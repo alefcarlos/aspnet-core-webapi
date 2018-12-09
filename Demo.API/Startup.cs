@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MongoDB;
-using Demo.Application.Data.MySql;
-using Demo.Application.GraphQL;
-using Demo.Application.Services;
-using Demo.Application.Validations;
+﻿using Demo.Core.Data.MongoDB;
+using Demo.Core.Data.MySql;
+using Demo.Core.GraphQL;
+using Demo.Core.Services;
+using Demo.Core.Validations;
 using Framework.Data.MongoDB;
 using Framework.WebAPI.Hosting;
 using Microsoft.AspNetCore.Builder;

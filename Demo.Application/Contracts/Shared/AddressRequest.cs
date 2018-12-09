@@ -1,4 +1,4 @@
-﻿namespace Demo.Application.Contracts.Shared
+﻿namespace Demo.Core.Contracts.Shared
 {
     /// <summary>
     /// Contrato de request comum para informação de endereço

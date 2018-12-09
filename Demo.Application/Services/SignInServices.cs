@@ -1,6 +1,6 @@
-﻿using Demo.Application.Contracts.SignIn;
-using Demo.Application.Data.MongoDB.Entities;
-using Demo.Application.Data.MongoDB.Repositories;
+﻿using Demo.Core.Contracts.SignIn;
+using Demo.Core.Data.MongoDB.Entities;
+using Demo.Core.Data.MongoDB.Repositories;
 using Framework.Services;
 using Framework.WebAPI.Hosting.JWT;
 using Microsoft.IdentityModel.Tokens;
@@ -8,7 +8,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     /// <summary>
     /// Serivço SignIn

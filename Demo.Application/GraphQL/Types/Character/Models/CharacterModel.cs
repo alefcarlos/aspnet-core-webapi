@@ -1,9 +1,9 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Shared.Enum;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Demo.Application.GraphQL.Types.Character.Models
+namespace Demo.Core.GraphQL.Types.Character.Models
 {
     public class CharacterModel
     {

@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MySql.Entities;
+﻿using Demo.Core.Data.MySql.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Demo.Application.Data.MySql.ModelBuilders
+namespace Demo.Core.Data.MySql.ModelBuilders
 {
     public static class EntityModelBuilderExtensions
     {

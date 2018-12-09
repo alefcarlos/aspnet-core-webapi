@@ -1,4 +1,4 @@
-﻿using Demo.Application.Services;
+﻿using Demo.Core.Services;
 using Framework.WebAPI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

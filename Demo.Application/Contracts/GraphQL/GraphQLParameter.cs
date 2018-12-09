@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Demo.Application.Contracts.GraphQL
+namespace Demo.Core.Contracts.GraphQL
 {
     public class GraphQLParameter
     {

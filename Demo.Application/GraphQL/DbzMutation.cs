@@ -1,11 +1,11 @@
-﻿using Demo.Application.GraphQL.Types.Character;
-using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.Services.GraphQL;
+﻿using Demo.Core.GraphQL.Types.Character;
+using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.Services.GraphQL;
 using GraphQL.Authorization;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Application.GraphQL.Types
+namespace Demo.Core.GraphQL.Types
 {
     public class DbzMutation : ObjectGraphType
     {

@@ -1,9 +1,9 @@
-﻿using Demo.Application.Contracts.Shared;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Contracts.Shared;
+using Demo.Core.Shared.Enum;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Demo.Application.Contracts.SignUp
+namespace Demo.Core.Contracts.SignUp
 {
     /// <summary>
     /// Contrato de criação de usuário

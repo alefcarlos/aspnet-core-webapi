@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Data.MySql.ModelBuilders;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Data.MySql.ModelBuilders;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.Application.Data.MySql
+namespace Demo.Core.Data.MySql
 {
     /// <summary>
     /// Contexto de conexão para a base DBZ

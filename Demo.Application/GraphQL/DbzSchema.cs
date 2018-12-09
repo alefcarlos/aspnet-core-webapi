@@ -1,7 +1,7 @@
 ﻿using GraphQL;
 using GraphQL.Types;
 
-namespace Demo.Application.GraphQL.Types
+namespace Demo.Core.GraphQL.Types
 {
     public class DbzSchema : Schema
     {

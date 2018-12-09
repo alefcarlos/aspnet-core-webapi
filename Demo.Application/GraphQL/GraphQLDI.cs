@@ -1,6 +1,6 @@
-﻿using Demo.Application.GraphQL.Types;
-using Demo.Application.GraphQL.Types.Character;
-using Demo.Application.GraphQL.Types.Family;
+﻿using Demo.Core.GraphQL.Types;
+using Demo.Core.GraphQL.Types.Character;
+using Demo.Core.GraphQL.Types.Family;
 using GraphQL;
 using GraphQL.Authorization;
 using GraphQL.Http;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Security.Claims;
 
-namespace Demo.Application.GraphQL
+namespace Demo.Core.GraphQL
 {
     public static class GraphQLDI
     {

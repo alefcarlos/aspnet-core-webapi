@@ -1,4 +1,4 @@
-﻿namespace Demo.Application.Shared.Enum
+﻿namespace Demo.Core.Shared.Enum
 {
     /// <summary>
     /// Enumerador de sexo 

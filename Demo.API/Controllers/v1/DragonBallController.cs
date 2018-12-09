@@ -1,7 +1,7 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
-using Demo.Application.Contracts.GraphQL;
-using Demo.Application.GraphQL;
-using Demo.Application.Services;
+﻿using Demo.Core.Contracts.DragonBall.Request;
+using Demo.Core.Contracts.GraphQL;
+using Demo.Core.GraphQL;
+using Demo.Core.Services;
 using Framework.WebAPI;
 using GraphQL;
 using GraphQL.Types;

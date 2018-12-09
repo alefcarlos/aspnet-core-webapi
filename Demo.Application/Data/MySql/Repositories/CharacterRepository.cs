@@ -1,7 +1,7 @@
-﻿using Demo.Application.Data.MySql.Entities;
+﻿using Demo.Core.Data.MySql.Entities;
 using Framework.Data.EntityFramework;
 
-namespace Demo.Application.Data.MySql.Repositories
+namespace Demo.Core.Data.MySql.Repositories
 {
     public class CharacterRepository : EFRepositoryBase<CharacterEntity>, ICharacterRepository
     {

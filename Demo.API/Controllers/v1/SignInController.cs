@@ -1,5 +1,5 @@
-﻿using Demo.Application.Contracts.SignIn;
-using Demo.Application.Services;
+﻿using Demo.Core.Contracts.SignIn;
+using Demo.Core.Services;
 using Framework.WebAPI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

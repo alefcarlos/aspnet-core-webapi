@@ -1,6 +1,6 @@
 ﻿using GraphQL.Types;
 
-namespace Demo.Application.GraphQL.Types.Character
+namespace Demo.Core.GraphQL.Types.Character
 {
     public class CharacterGraphInputType : InputObjectGraphType
     {

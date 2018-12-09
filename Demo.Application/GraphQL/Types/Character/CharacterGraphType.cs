@@ -1,10 +1,10 @@
-﻿using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.GraphQL.Types.Family;
-using Demo.Application.Services.GraphQL;
+﻿using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.GraphQL.Types.Family;
+using Demo.Core.Services.GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Application.GraphQL.Types.Character
+namespace Demo.Core.GraphQL.Types.Character
 {
     /// <summary>
     /// Tipo para a entidade <see cref="CharacterModel"/>

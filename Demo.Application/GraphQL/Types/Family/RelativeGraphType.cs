@@ -1,10 +1,10 @@
-﻿using Demo.Application.GraphQL.Types.Character;
-using Demo.Application.GraphQL.Types.Family.Models;
-using Demo.Application.Services.GraphQL;
+﻿using Demo.Core.GraphQL.Types.Character;
+using Demo.Core.GraphQL.Types.Family.Models;
+using Demo.Core.Services.GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Demo.Application.GraphQL.Types.Family
+namespace Demo.Core.GraphQL.Types.Family
 {
     /// <summary>
     /// Tipo para a entidade <see cref="RelativeModel"/>

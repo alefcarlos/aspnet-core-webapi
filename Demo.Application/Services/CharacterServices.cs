@@ -1,10 +1,10 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
-using Demo.Application.Data.MySql.Entities;
-using Demo.Application.Data.MySql.Repositories;
+﻿using Demo.Core.Contracts.DragonBall.Request;
+using Demo.Core.Data.MySql.Entities;
+using Demo.Core.Data.MySql.Repositories;
 using Framework.Services;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services
+namespace Demo.Core.Services
 {
     public class CharacterServices : BaseServices, ICharacterServices
     {

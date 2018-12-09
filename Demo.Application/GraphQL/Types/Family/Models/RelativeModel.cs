@@ -1,8 +1,8 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Data.MySql.Entities;
+using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.Shared.Enum;
 
-namespace Demo.Application.GraphQL.Types.Family.Models
+namespace Demo.Core.GraphQL.Types.Family.Models
 {
     public class RelativeModel : CharacterModel
     {

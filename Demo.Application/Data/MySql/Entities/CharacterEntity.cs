@@ -1,11 +1,11 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
-using Demo.Application.GraphQL.Types.Character.Models;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Contracts.DragonBall.Request;
+using Demo.Core.GraphQL.Types.Character.Models;
+using Demo.Core.Shared.Enum;
 using Framework.Data.EntityFramework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Demo.Application.Data.MySql.Entities
+namespace Demo.Core.Data.MySql.Entities
 {
     /// <summary>
     /// Entidade de personagem

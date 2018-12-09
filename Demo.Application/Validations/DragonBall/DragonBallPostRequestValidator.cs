@@ -1,7 +1,7 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
+﻿using Demo.Core.Contracts.DragonBall.Request;
 using FluentValidation;
 
-namespace Demo.Application.Validations.DragonBall
+namespace Demo.Core.Validations.DragonBall
 {
     public class DragonBallPostRequestValidator : AbstractValidator<DragonBallPostRequest>
     {

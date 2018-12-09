@@ -1,8 +1,8 @@
-﻿using Demo.Application.Contracts.DragonBall.Request;
-using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Contracts.DragonBall.Request;
+using Demo.Core.Shared.Enum;
 using Framework.Data.EntityFramework;
 
-namespace Demo.Application.Data.MySql.Entities
+namespace Demo.Core.Data.MySql.Entities
 {
     /// <summary>
     /// Entidade de familiares

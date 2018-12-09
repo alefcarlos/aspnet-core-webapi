@@ -1,7 +1,7 @@
-﻿using Demo.Application.Data.MongoDB.Repositories;
+﻿using Demo.Core.Data.MongoDB.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Demo.Application.Data.MongoDB
+namespace Demo.Core.Data.MongoDB
 {
     public static class RepositoriesDI
     {

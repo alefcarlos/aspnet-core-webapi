@@ -1,7 +1,7 @@
-﻿using Demo.Application.Shared.Enum;
+﻿using Demo.Core.Shared.Enum;
 using GraphQL.Types;
 
-namespace Demo.Application.GraphQL.Types.Family
+namespace Demo.Core.GraphQL.Types.Family
 {
     public class RelativeKindEnumType : EnumerationGraphType<ERelativeKind>
     {
