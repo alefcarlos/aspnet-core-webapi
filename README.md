@@ -82,6 +82,7 @@ docker build -t aspnet-core-webapi .
 O arquivo `docker-compose.yml` já contém as imagens necessárias para rodar a aplicação, basta executar o comando abaixo:
 
 ```bash
+docker-compose build
 docker-compose up
 ```
 

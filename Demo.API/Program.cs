@@ -23,8 +23,9 @@ namespace Demo.API
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while seeding the database.");
+                    //var logger = services.GetRequiredService<ILogger<Program>>();
+                    Console.WriteLine("An error occurred while seeding the database.");
+                    Console.WriteLine(ex.Message);
                 }
             }
 
