@@ -261,5 +261,5 @@ paket-files/
 __pycache__/
 *.pyc
 
-ecommerce/bin*
-ecommerce/obj*
+sonar.txt
+coverage.json
