@@ -22,6 +22,8 @@ Técnicas
 Para utilizar o GraphQL é necessário ter um token de autenticação Bearer.
 Acessando a url `https://localhost:5001/ui/playground` terá disponível uma UI para realizar alguns testes ;)
 
+> Para adicionar novos personagens basta realizar as operações do contorller Dragon Ball.
+
 Tipos disponívels:
 
 ```graphql
@@ -29,16 +31,16 @@ type Character {
     id: int,
     name: string!,
     bithDate: string!,
-    relatives: [relative!],
-    kind: kind!
+    relatives: [Relative!],
+    kind: Kind!
 }
 
 type Relative {
     id: int!,
-    name: string,
+    name: string!,
     bithDate: string!,
-    relatives: [relative!],
-    relativeKind: 
+    relatives: [Relative!],
+    relativeKind: RelativeKind!
 }
 
 enum Kind {
