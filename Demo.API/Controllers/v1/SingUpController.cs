@@ -3,7 +3,6 @@ using Demo.Core.Services;
 using Framework.WebAPI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
 
 namespace Demo.API.Controllers.v1
@@ -29,9 +28,9 @@ namespace Demo.API.Controllers.v1
         /// </summary>
         /// <param name="request">Dados do usuário</param>
         [HttpPost]
-        [SwaggerResponse((int)HttpStatusCode.OK)]
-        [SwaggerResponse((int)HttpStatusCode.BadRequest)]
-        [SwaggerResponse((int)HttpStatusCode.Conflict)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Conflict)]
         public IActionResult Post([FromBody]SignUpPostRequest request)
         {
             var result = _services.Post(request);
