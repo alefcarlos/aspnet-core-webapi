@@ -1,4 +1,5 @@
 ﻿using Demo.Application.Data.MySql.Entities;
+using Demo.Application.Shared.Enum;
 using System.Linq;
 
 namespace Demo.Application.Data.MySql
@@ -83,70 +84,70 @@ namespace Demo.Application.Data.MySql
                 {
                      CharacterID =5,
                      RelativeID = 1,
-                     Kind = EFamilyKind.Father
+                     Kind = ERelativeKind.Father
                 },
                 //Goku - Bardock
                 new FamilyEntity
                 {
                      CharacterID = 1,
                      RelativeID = 5,
-                     Kind = EFamilyKind.Son
+                     Kind = ERelativeKind.Son
                 },
                 //Goku - Gohan
                 new FamilyEntity
                 {
                      CharacterID =1,
                      RelativeID = 6,
-                     Kind = EFamilyKind.Father
+                     Kind = ERelativeKind.Father
                 },
                 //Gohan - Goku
                 new FamilyEntity
                 {
                      CharacterID =6,
                      RelativeID = 1,
-                     Kind = EFamilyKind.Son
+                     Kind = ERelativeKind.Son
                 },
                 //Goku - Goten
                 new FamilyEntity
                 {
                      CharacterID =1,
                      RelativeID = 8,
-                     Kind = EFamilyKind.Father
+                     Kind = ERelativeKind.Father
                 },
                 //Goten - Goku
                 new FamilyEntity
                 {
                      CharacterID =8,
                      RelativeID = 1,
-                     Kind = EFamilyKind.Son
+                     Kind = ERelativeKind.Son
                 },
                 //Goten - Gohan
                 new FamilyEntity
                 {
                      CharacterID =8,
                      RelativeID = 6,
-                     Kind = EFamilyKind.Brother
+                     Kind = ERelativeKind.Brother
                 },
                 //Gohan - Gohan
                 new FamilyEntity
                 {
                      CharacterID =6,
                      RelativeID = 8,
-                     Kind = EFamilyKind.Brother
+                     Kind = ERelativeKind.Brother
                 },
                 //Vegeta - Trunks
                 new FamilyEntity
                 {
                      CharacterID =2,
                      RelativeID = 7,
-                     Kind = EFamilyKind.Father
+                     Kind = ERelativeKind.Father
                 },
                 //Trunks - Vegeta
                 new FamilyEntity
                 {
                      CharacterID =7,
                      RelativeID = 2,
-                     Kind = EFamilyKind.Son
+                     Kind = ERelativeKind.Son
                 }
             };
 

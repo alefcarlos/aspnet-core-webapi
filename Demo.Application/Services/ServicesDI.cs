@@ -14,7 +14,8 @@ namespace Demo.Application.Services
             services.AddSingleton<ISignUpServices, SignUpServices>();
             services.AddSingleton<IProfileServices, ProfileServices>();
 
-
+            services.AddScoped<ICharacterServices, CharacterServices>();
+            
             //GraphQL Services
             services.AddGraphServices();
 

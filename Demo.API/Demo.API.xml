@@ -4,6 +4,24 @@
         <name>Demo.API</name>
     </assembly>
     <members>
+        <member name="T:Demo.API.Controllers.v1.DragonBallController">
+            <summary>
+            RESTFull services for Dragon Ball
+            </summary>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.DragonBallController.Post(Demo.Application.Contracts.DragonBall.Request.DragonBallPostRequest)">
+            <summary>
+            Adiciona um novo personagem.
+            </summary>
+            <param name="request">Dados do personagem</param>
+        </member>
+        <member name="M:Demo.API.Controllers.v1.DragonBallController.PostRelative(System.Int32,Demo.Application.Contracts.DragonBall.Request.DragonBallPostRelativeRequest)">
+            <summary>
+            Adiciona um familiar a um determinado personagem
+            </summary>
+            <param name="request">Dados personagem familiar</param>
+            <param name="id">ID do personagem</param>
+        </member>
         <member name="T:Demo.API.Controllers.v1.ProfileController">
             <summary>
             RESTfull services for User profile

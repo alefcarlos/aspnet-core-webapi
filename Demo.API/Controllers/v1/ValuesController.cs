@@ -9,7 +9,7 @@ namespace Demo.API.Controllers
     /// </summary>
     [Authorize(JwtBearerDefaults.AuthenticationScheme)]
     [ApiVersion("1.0")]
-    [Route("api/v{api-version:apiVersion}/values")]
+    [Route("v{api-version:apiVersion}/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Framework.Services
 {
@@ -17,6 +18,8 @@ namespace Framework.Services
         public ServicesResult NotFound(string message) => new ServicesResult(false, System.Net.HttpStatusCode.NotFound, message);
 
         public ServicesResult Conflict(string message) => new ServicesResult(false, System.Net.HttpStatusCode.Conflict, message);
+
+        public ServicesResult Created() => new ServicesResult(true, System.Net.HttpStatusCode.Created);
 
         //public ServicesResult ValidateRequest<TValidator, TRequest>(TRequest request) where TValidator : IValidator, new()
         //{

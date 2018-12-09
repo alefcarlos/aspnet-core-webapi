@@ -62,7 +62,8 @@ namespace Demo.Application.GraphQL
             // use graphql-playground at default url /ui/playground
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
-                Path = "/ui/playground"
+                Path = "/ui/playground",
+                GraphQLEndPoint = "/v1/dragonball/graphql"
             });
 
             return app;

@@ -3,7 +3,7 @@ using Demo.Application.GraphQL.Types.Family.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Demo.Application.Services
+namespace Demo.Application.Services.GraphQL
 {
     public interface ICharacterGraphServices
     {

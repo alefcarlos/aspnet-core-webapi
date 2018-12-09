@@ -1,4 +1,6 @@
-﻿using Demo.Application.GraphQL.Types.Character.Models;
+﻿using Demo.Application.Contracts.DragonBall.Request;
+using Demo.Application.GraphQL.Types.Character.Models;
+using Demo.Application.Shared.Enum;
 using Framework.Data.EntityFramework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +12,7 @@ namespace Demo.Application.Data.MySql.Entities
     /// </summary>
     public class CharacterEntity : EFEntityBase
     {
+
         public CharacterEntity()
         {
 
@@ -20,6 +23,13 @@ namespace Demo.Application.Data.MySql.Entities
             Name = graphModel.Name;
             Kind = graphModel.Kind;
             BirthDate = graphModel.BirthDate;
+        }
+
+        public CharacterEntity(DragonBallPostRequest request)
+        {
+            Name = request.Name;
+            Kind = request.Kind;
+            BirthDate = request.BirthDate;
         }
 
         /// <summary>
@@ -47,21 +57,5 @@ namespace Demo.Application.Data.MySql.Entities
         /// Lista de parentes
         /// </summary>
         public List<FamilyEntity> Relatives { get; set; }
-    }
-
-    /// <summary>
-    /// Enumerador de especies
-    /// </summary>
-    public enum ECharecterKind
-    {
-        /// <summary>
-        /// Humano
-        /// </summary>
-        Human = 1,
-
-        /// <summary>
-        /// Sayajin
-        /// </summary>
-        Sayajin
     }
 }

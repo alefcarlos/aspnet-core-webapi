@@ -1,5 +1,6 @@
-﻿using Framework.Data.EntityFramework;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Demo.Application.Contracts.DragonBall.Request;
+using Demo.Application.Shared.Enum;
+using Framework.Data.EntityFramework;
 
 namespace Demo.Application.Data.MySql.Entities
 {
@@ -8,6 +9,17 @@ namespace Demo.Application.Data.MySql.Entities
     /// </summary>
     public class FamilyEntity : EFEntityBase
     {
+        public FamilyEntity()
+        {
+
+        }
+
+        public FamilyEntity(DragonBallPostRelativeRequest request)
+        {
+            RelativeID = request.RelativeId;
+            Kind = request.Kind;
+        }
+
         /// <summary>
         /// FK do personagem
         /// </summary>
@@ -23,20 +35,6 @@ namespace Demo.Application.Data.MySql.Entities
         /// <summary>
         /// Grau de parentesco
         /// </summary>
-        public EFamilyKind Kind { get; set; }
-    }
-
-    /// <summary>
-    /// Enumerador de grau de parentesco
-    /// </summary>
-    public enum EFamilyKind
-    {
-        Brother = 1,
-        Sister,
-        Son,
-        Daugther,
-        Spouse,
-        Father,
-        Mother
+        public ERelativeKind Kind { get; set; }
     }
 }

@@ -1,7 +1,6 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.GraphQL.Types.Character;
+﻿using Demo.Application.GraphQL.Types.Character;
 using Demo.Application.GraphQL.Types.Family.Models;
-using Demo.Application.Services;
+using Demo.Application.Services.GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +23,7 @@ namespace Demo.Application.GraphQL.Types.Family
             Field(x => x.Name).Description("Nome do personagem");
             Field<CharacterKindEnum>("kind", "Raça do personagem");
             Field(x => x.BirthDate).Description("Ano de nascimento do personagem");
-            Field<FamilyKindEnumType>("relativeKind", "Grau de parentesco");
+            Field<RelativeKindEnumType>("relativeKind", "Grau de parentesco");
             Field<ListGraphType<RelativeGraphType>>("relatives", resolve: context => characterGraphServices.GetRelativesAsync(context.Source.ID)).Description = "Lista de parentes";
         }
     }

@@ -13,7 +13,7 @@ namespace Demo.API.Controllers.v1
     /// </summary>
     [AllowAnonymous]
     [ApiVersion("1.0")]
-    [Route("api/v{api-version:apiVersion}/signin")]
+    [Route("v{api-version:apiVersion}/[controller]")]
     [ApiController]
     public class SignInController : BaseController
     {

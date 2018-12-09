@@ -1,4 +1,5 @@
 ﻿using Demo.Application.Data.MySql.Entities;
+using Demo.Application.Shared.Enum;
 using GraphQL.Types;
 
 namespace Demo.Application.GraphQL.Types.Character

@@ -1,8 +1,6 @@
-﻿using Demo.Application.Data.MySql.Entities;
-using Demo.Application.GraphQL.Types.Character.Models;
+﻿using Demo.Application.GraphQL.Types.Character.Models;
 using Demo.Application.GraphQL.Types.Family;
-using Demo.Application.Services;
-using GraphQL.Authorization;
+using Demo.Application.Services.GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 

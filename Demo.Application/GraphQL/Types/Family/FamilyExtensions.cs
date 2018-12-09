@@ -7,7 +7,7 @@ namespace Demo.Application.GraphQL.Types.Family
         public static IServiceCollection AddGraphQLFamilyModels(this IServiceCollection services)
         {
             services.AddSingleton<RelativeGraphType>();
-            services.AddSingleton<FamilyKindEnumType>();
+            services.AddSingleton<RelativeKindEnumType>();
 
             return services;
         }
