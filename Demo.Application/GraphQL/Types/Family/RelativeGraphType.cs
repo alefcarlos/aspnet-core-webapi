@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.Application.GraphQL.Types.Family
 {
     /// <summary>
-    /// Tipo para a entidade <see cref="CharacterEntity"/>
+    /// Tipo para a entidade <see cref="RelativeModel"/>
     /// </summary>
     public class RelativeGraphType : ObjectGraphType<RelativeModel>
     {
@@ -17,8 +17,8 @@ namespace Demo.Application.GraphQL.Types.Family
         /// </summary>
         public RelativeGraphType([FromServices]ICharacterGraphServices characterGraphServices)
         {
-            Name = "Character";
-            Description = "Um personagem do mundo de Dragon Ball Z";
+            Name = "Relative";
+            Description = "Informações de parentesco de um personagem do Dragon Ball";
 
             Field(x => x.ID).Name("id");
             Field(x => x.Name).Description("Nome do personagem");

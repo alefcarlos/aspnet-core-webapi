@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.Application.GraphQL.Types.Character
 {
     /// <summary>
-    /// Tipo para a entidade <see cref="CharacterEntity"/>
+    /// Tipo para a entidade <see cref="CharacterModel"/>
     /// </summary>
     public class CharacterGraphType : ObjectGraphType<CharacterModel>
     {

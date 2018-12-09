@@ -1,7 +1,7 @@
 ﻿using GraphQL.Authorization;
 using System.Security.Claims;
 
-namespace Demo.Application
+namespace Demo.Application.GraphQL
 {
     public class GraphQLUserContext : IProvideClaimsPrincipal
     {

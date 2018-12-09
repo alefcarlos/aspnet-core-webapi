@@ -5,6 +5,9 @@ namespace Demo.Application.GraphQL.Types.Family.Models
 {
     public class RelativeModel : CharacterModel
     {
+        /// <summary>
+        /// Grau de parentesco
+        /// </summary>
         public EFamilyKind RelativeKind { get; set; }
 
         public RelativeModel()

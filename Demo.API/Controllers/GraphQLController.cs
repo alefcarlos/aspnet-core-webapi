@@ -1,11 +1,9 @@
-﻿using Demo.Application;
-using Demo.Application.Contracts.GraphQL;
+﻿using Demo.Application.Contracts.GraphQL;
+using Demo.Application.GraphQL;
 using Framework.WebAPI;
 using GraphQL;
 using GraphQL.Types;
 using GraphQL.Validation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Demo.API.Controllers
 {
-    [Authorize(JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
     [ApiController]
     public class GraphQLController : BaseController
