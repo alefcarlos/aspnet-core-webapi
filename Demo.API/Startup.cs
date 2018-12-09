@@ -48,6 +48,8 @@ namespace Demo.API
                 app.UseHttpsRedirection();
             }
 
+            app.UsePathBase("/api");
+
             app.AddGraphQLTypes();
         }
     }
