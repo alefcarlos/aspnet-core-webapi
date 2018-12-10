@@ -56,18 +56,25 @@ namespace Framework.WebAPI.Hosting
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
         {
 
-            BeforeConfigureAppMVC(app, env);
+            BeforeConfigureApp(app, env);
 
             app.UseCustomCors();
 
             app.UseMiddleware<HttpExceptionMiddleware>()
                 .UseMvc();
 
+            app.UseAuthentication();
+
             app.UseDocumentation(provider);
 
             app.UseHealthCheck();
+
+            AfterConfigureApp(app, env);
+
         }
 
-        public abstract void BeforeConfigureAppMVC(IApplicationBuilder app, IHostingEnvironment env);
+        public abstract void BeforeConfigureApp(IApplicationBuilder app, IHostingEnvironment env);
+
+        public abstract void AfterConfigureApp(IApplicationBuilder app, IHostingEnvironment env);
     }
 }

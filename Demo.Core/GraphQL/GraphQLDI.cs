@@ -36,7 +36,7 @@ namespace Demo.Core.GraphQL
             {
                 _.EnableMetrics = true;
                 _.ExposeExceptions = true;
-            });
+            }).AddUserContextBuilder(context => new GraphQLUserContext { User = context.User });
 
             return services;
         }
@@ -59,11 +59,12 @@ namespace Demo.Core.GraphQL
 
         public static IApplicationBuilder AddGraphQLTypes(this IApplicationBuilder app)
         {
+            app.UseGraphQL<ISchema>();
+
             // use graphql-playground at default url /ui/playground
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
-                Path = "/ui/playground",
-                GraphQLEndPoint = "/v1/dragonball/graphql"
+                Path = "/ui/playground"
             });
 
             return app;

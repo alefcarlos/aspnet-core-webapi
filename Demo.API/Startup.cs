@@ -36,7 +36,7 @@ namespace Demo.API
             services.AddGraphQLTypes();
         }
 
-        public override void BeforeConfigureAppMVC(IApplicationBuilder app, IHostingEnvironment env)
+        public override void BeforeConfigureApp(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -47,9 +47,10 @@ namespace Demo.API
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
+        }
 
-            app.UsePathBase("/api");
-
+        public override void AfterConfigureApp(IApplicationBuilder app, IHostingEnvironment env)
+        {
             app.AddGraphQLTypes();
         }
     }

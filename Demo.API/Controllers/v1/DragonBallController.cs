@@ -61,32 +61,32 @@ namespace Demo.API.Controllers.v1
             return result.ParseResult();
         }
 
-        [HttpPost("graphql")]
-        public async Task<IActionResult> Post([FromBody] GraphQLParameter query)
-        {
-            if (query == null)
-            { throw new ArgumentNullException(nameof(query)); }
-            var inputs = query.Variables.ToInputs();
-            var executionOptions = new ExecutionOptions
-            {
-                Schema = _schema,
-                Query = query.Query,
-                Inputs = inputs,
-                UserContext = new GraphQLUserContext
-                {
-                    User = User
-                },
-                ValidationRules = DocumentValidator.CoreRules().Concat(_validationRules).ToList()
-            };
+        //[HttpPost("graphql")]
+        //public async Task<IActionResult> Post([FromBody] GraphQLParameter query)
+        //{
+        //    if (query == null)
+        //    { throw new ArgumentNullException(nameof(query)); }
+        //    var inputs = query.Variables.ToInputs();
+        //    var executionOptions = new ExecutionOptions
+        //    {
+        //        Schema = _schema,
+        //        Query = query.Query,
+        //        Inputs = inputs,
+        //        UserContext = new GraphQLUserContext
+        //        {
+        //            User = User
+        //        },
+        //        ValidationRules = DocumentValidator.CoreRules().Concat(_validationRules).ToList()
+        //    };
 
-            var result = await _documentExecuter.ExecuteAsync(executionOptions).ConfigureAwait(false);
+        //    var result = await _documentExecuter.ExecuteAsync(executionOptions).ConfigureAwait(false);
 
-            if (result.Errors?.Count > 0)
-            {
-                return BadRequest(result);
-            }
+        //    if (result.Errors?.Count > 0)
+        //    {
+        //        return BadRequest(result);
+        //    }
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
     }
 }

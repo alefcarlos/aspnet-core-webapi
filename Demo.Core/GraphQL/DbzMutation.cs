@@ -12,6 +12,7 @@ namespace Demo.Core.GraphQL.Types
         public DbzMutation([FromServices]ICharacterGraphServices characterGraphServices)
         {
             this.AuthorizeWith("AdminPolicy");
+
             Name = "CreateCharacterMutation";
 
             Field<CharacterGraphType>(
