@@ -1,4 +1,5 @@
 ﻿using Demo.Core.Data.MySql.Repositories;
+using Framework.Data.MySql;
 using Framework.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace Demo.Core.Data.MySql
 
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IFamilyRepository, FamilyRepository>();
+
+            services.AddMySqlHealthCheck(connection);
 
             return services;
         }

@@ -36,6 +36,8 @@ namespace Framework.WebAPI.Hosting
 
             services.AddCustomCors();
 
+            services.AddHealthCheck();
+
             services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation();
@@ -43,8 +45,6 @@ namespace Framework.WebAPI.Hosting
 
             services.AddApiVersion();
             services.AddDocumentation();
-
-            services.AddHealthCheck();
 
             AfterConfigureServices(services);
         }
@@ -60,14 +60,14 @@ namespace Framework.WebAPI.Hosting
 
             app.UseCustomCors();
 
+            app.UseHealthCheck();
+
             app.UseMiddleware<HttpExceptionMiddleware>()
                 .UseMvc();
 
             app.UseAuthentication();
 
             app.UseDocumentation(provider);
-
-            app.UseHealthCheck();
 
             AfterConfigureApp(app, env);
 
