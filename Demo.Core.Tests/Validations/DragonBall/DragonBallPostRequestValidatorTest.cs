@@ -3,7 +3,7 @@ using Demo.Core.Validations.DragonBall;
 using FluentValidation.TestHelper;
 using Xunit;
 
-namespace Demo.Tests.Validations.Dragonbal
+namespace Demo.Core.Tests.Validations.Dragonbal
 {
     public class DragonBallPostRequestValidatorTest
     {
@@ -40,12 +40,6 @@ namespace Demo.Tests.Validations.Dragonbal
         public void WhenHaveBirth_ShouldHaveNoError()
         {
             validator.ShouldNotHaveValidationErrorFor(x => x.BirthDate, "18/11/1993");
-        }
-
-        [Fact]
-        public void WhenInvalidKind_ShouldHaveError()
-        {
-            validator.ShouldNotHaveValidationErrorFor(x => x.Kind, ECharecterKind.Sayajin);
         }
 
         [Fact]

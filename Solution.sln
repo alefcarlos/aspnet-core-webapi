@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Data", "Framework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{1F5EC200-39E5-40E1-A916-A2B9309FBEF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Tests", "Demo.Tests\Demo.Tests.csproj", "{CBEF68F3-A69F-42D6-89FE-BA251B911306}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Core.Tests", "Demo.Core.Tests\Demo.Core.Tests.csproj", "{CBEF68F3-A69F-42D6-89FE-BA251B911306}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core.Tests", "Framework.Core.Tests\Framework.Core.Tests.csproj", "{E6657CD1-CD93-4615-9E0C-E09A8629CC98}"
 EndProject
