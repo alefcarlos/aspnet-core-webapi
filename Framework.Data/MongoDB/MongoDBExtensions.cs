@@ -1,4 +1,4 @@
-﻿using Framework.Helpers;
+﻿using Framework.Core.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 

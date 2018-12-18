@@ -23,16 +23,16 @@ namespace Demo.API.Controllers.v1
     public class DragonBallController : BaseController
     {
         private readonly ICharacterServices _services;
-        private readonly IDocumentExecuter _documentExecuter;
-        private readonly ISchema _schema;
-        IEnumerable<IValidationRule> _validationRules;
+        // private readonly IDocumentExecuter _documentExecuter;
+        // private readonly ISchema _schema;
+        // IEnumerable<IValidationRule> _validationRules;
 
-        public DragonBallController(ICharacterServices services, IDocumentExecuter documentExecuter, ISchema schema, IEnumerable<IValidationRule> validationRules)
+        public DragonBallController(ICharacterServices services) //, IDocumentExecuter documentExecuter, ISchema schema, IEnumerable<IValidationRule> validationRules)
         {
             _services = services;
-            _documentExecuter = documentExecuter;
-            _schema = schema;
-            _validationRules = validationRules;
+            // _documentExecuter = documentExecuter;
+            // _schema = schema;
+            // _validationRules = validationRules;
         }
 
         /// <summary>

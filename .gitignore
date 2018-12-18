@@ -265,3 +265,5 @@ sonar.txt
 coverage.json
 lcov.info
 lcov.opencover.xml
+.sonarqube
+coverage.opencover.xml

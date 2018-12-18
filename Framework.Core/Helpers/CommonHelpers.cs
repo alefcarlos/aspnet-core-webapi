@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.Helpers
+namespace Framework.Core.Helpers
 {
     public static class CommonHelpers
     {

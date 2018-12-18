@@ -1,6 +1,6 @@
 ﻿using Demo.Core.Data.MySql.Repositories;
 using Framework.Data.MySql;
-using Framework.Helpers;
+using Framework.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;

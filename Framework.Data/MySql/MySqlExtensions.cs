@@ -1,5 +1,4 @@
-﻿using Framework.Helpers;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.Data.MySql
 {
