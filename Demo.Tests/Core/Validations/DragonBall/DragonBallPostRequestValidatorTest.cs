@@ -3,7 +3,7 @@ using Demo.Core.Validations.DragonBall;
 using FluentValidation.TestHelper;
 using Xunit;
 
-namespace Demo.Tests.Core.Validations.Dragonbal
+namespace Demo.Tests.Validations.Dragonbal
 {
     public class DragonBallPostRequestValidatorTest
     {

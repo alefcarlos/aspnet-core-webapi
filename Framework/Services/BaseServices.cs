@@ -20,15 +20,5 @@ namespace Framework.Services
         public ServicesResult Conflict(string message) => new ServicesResult(false, System.Net.HttpStatusCode.Conflict, message);
 
         public ServicesResult Created() => new ServicesResult(true, System.Net.HttpStatusCode.Created);
-
-        //public ServicesResult ValidateRequest<TValidator, TRequest>(TRequest request) where TValidator : IValidator, new()
-        //{
-        //    var validator = new TValidator();
-        //    var validatorResult = validator.Validate(request);
-
-        //    if (!validatorResult.IsValid)
-        //        return BadRequest(validatorResult.Errors.First().ErrorMessage);
-
-        //}
     }
 }

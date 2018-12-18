@@ -6,28 +6,23 @@ namespace Framework.Core.Helpers
     {
         public static T GetValueFromEnv<T>(string keyName, bool throwException = true)
         {
-            if (string.IsNullOrWhiteSpace(keyName))
-            {
-                throw new ArgumentNullException(nameof(keyName), "Informe um nome de chave.");
-            }
-
-            var value = GetEnvironmentVariable(keyName, "keyname", throwException);
+            var value = GetEnvironmentVariable(keyName, throwException);
 
             return (T)Convert.ChangeType(value, typeof(T));
         }
 
-        public static string GetEnvironmentVariable(string envName, string paramName, bool throwException = true)
+        public static string GetEnvironmentVariable(string envName, bool throwException = true)
         {
             if (string.IsNullOrWhiteSpace(envName))
             {
-                throw new ArgumentOutOfRangeException(paramName, string.Format("o parâmetro '{0}' deve ser informado (não pode ser vazio ou nulo).", paramName));
+                throw new ArgumentNullException(nameof(envName), $"o parâmetro {nameof(envName)} deve ser informado (não pode ser vazio ou nulo).");
             }
 
             var value = Environment.GetEnvironmentVariable(envName);
 
             if (string.IsNullOrWhiteSpace(value) && throwException)
             {
-                throw new ArgumentOutOfRangeException(paramName, string.Format("não existe ou está vazio o valor para a variável de ambiente '{0}'.", envName));
+                throw new ArgumentNullException(nameof(envName), $"Não foi encontrado valor para env {envName}.");
             }
 
             return value;
