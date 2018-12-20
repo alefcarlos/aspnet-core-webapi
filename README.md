@@ -1,6 +1,6 @@
 # aspnet-core-webapi
 
-Esse é um projeto para futuras consultas de técnicas empregadas com ASP.NET Core 2.2.
+Esse é um projeto para futuras consultas de técnicas empregadas com ASP.NET Core 2.2 aplicando [API-Guidelines](https://github.com/Microsoft/api-guidelines) da Microsoft.
 
 Técnicas
 
