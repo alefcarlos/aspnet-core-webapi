@@ -44,7 +44,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.CreateAsync(request);
 
-            return result.ParseResult();
+            return ParseResult(result, nameof(GetCharacter));
         }
 
 
@@ -58,7 +58,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.CreateRelative(id, request);
 
-            return result.ParseResult();
+            return ParseResult(result);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.GetByIDAsync(id);
 
-            return result.ParseResult();
+            return ParseResult(result);
         }
 
         //[HttpPost("graphql")]

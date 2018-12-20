@@ -35,7 +35,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = _services.Post(request);
 
-            return result.ParseResult();
+            return ParseResult(result);
         }
     }
 }

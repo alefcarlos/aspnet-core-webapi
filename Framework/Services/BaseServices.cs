@@ -20,5 +20,7 @@ namespace Framework.Services
         public ServicesResult Conflict(string message) => new ServicesResult(false, System.Net.HttpStatusCode.Conflict, message);
 
         public ServicesResult Created() => new ServicesResult(true, System.Net.HttpStatusCode.Created);
+
+        public ServicesResult Created(object data) => new ServicesResult(true, System.Net.HttpStatusCode.Created, data);
     }
 }

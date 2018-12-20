@@ -30,7 +30,7 @@ namespace Demo.API.Controllers.v1
         public async Task<IActionResult> Photo([FromBody] byte[] image)
         {
             var result = await _services.SaveUserPhotoAsync(GetUserId(), image);
-            return result.ParseResult();
+            return ParseResult(result);
         }
     }
 }

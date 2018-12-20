@@ -24,8 +24,8 @@ namespace Demo.Core.Services
 
         public async Task<ServicesResult> CreateAsync(DragonBallPostRequest request)
         {
-            var result = await _characterRepository.CreateAsync(new CharacterEntity(request), true);
-            return Created();
+            var entity = await _characterRepository.CreateAsync(new CharacterEntity(request), true);
+            return Created(entity);
         }
 
         public async Task<ServicesResult> CreateRelative(int id, DragonBallPostRelativeRequest request)
@@ -37,7 +37,7 @@ namespace Demo.Core.Services
 
             var result = await _familyRepository.CreateAsync(entity, true);
 
-            return Created();
+            return Created(result);
         }
 
         public async Task<ServicesResult> GetByIDAsync(int characterId)
