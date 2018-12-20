@@ -9,7 +9,7 @@ Técnicas
 - [x] Swagger
 - [x] Versionamento de API
 - [x] Docker
-- [x] HealthCheck
+- [x] HealthCheck - Utilizando a lib [Xabaril/AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
   - Acessar a url /healthz no browser
 - [x] FluentValidation
 - [x] GraphQL

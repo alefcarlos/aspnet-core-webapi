@@ -1,15 +1,7 @@
 ﻿using Demo.Core.Contracts.DragonBall.Request;
-using Demo.Core.Contracts.GraphQL;
-using Demo.Core.GraphQL;
 using Demo.Core.Services;
 using Framework.WebAPI;
-using GraphQL;
-using GraphQL.Types;
-using GraphQL.Validation;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Demo.API.Controllers.v1

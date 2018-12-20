@@ -20,6 +20,10 @@ namespace Framework.Data.CacheProviders
 
             services.AddSingleton<RedisConnectionWrapper>();
             services.AddScoped<IRedisCacheProvider, RedisCacheProvider>();
+
+            services.AddHealthChecks()
+                .AddRedis(redisUri, "redis", tags: new string[] { "db", "redis", "cache" });
+
             return services;
         }
     }
