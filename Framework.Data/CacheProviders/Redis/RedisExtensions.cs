@@ -19,7 +19,7 @@ namespace Framework.Data.CacheProviders
             services.AddSingleton(options);
 
             services.AddSingleton<RedisConnectionWrapper>();
-            services.AddSingleton<IRedisCacheProvider, RedisCacheProvider>();
+            services.AddScoped<IRedisCacheProvider, RedisCacheProvider>();
             return services;
         }
     }
