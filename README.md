@@ -21,6 +21,8 @@ Técnicas
   - [x] Retry
   - [x] Timeout
   - [ ] CircuitBreaker
+- [x] Caching
+  - [x] Redis - Baseado [nessa](https://ruhul.wordpress.com/2014/07/23/use-redis-as-cache-provider/ ) implementação
 - SonarQube
 
 # GraphQL

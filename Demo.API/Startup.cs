@@ -3,6 +3,7 @@ using Demo.Core.Data.MySql;
 using Demo.Core.GraphQL;
 using Demo.Core.Services;
 using Demo.Core.Validations;
+using Framework.Data.CacheProviders;
 using Framework.Data.MongoDB;
 using Framework.WebAPI.Hosting;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,9 @@ namespace Demo.API
 
             //GraphQL
             services.AddGraphQLTypes();
+
+            //Redis
+            services.AddRedis();
         }
 
         public override void BeforeConfigureApp(IApplicationBuilder app, IHostingEnvironment env)

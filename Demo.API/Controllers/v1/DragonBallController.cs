@@ -61,6 +61,18 @@ namespace Demo.API.Controllers.v1
             return result.ParseResult();
         }
 
+        /// <summary>
+        /// Obtém um determinado personagem por ID
+        /// </summary>
+        /// <param name="id">Código do personagem</param>
+        [HttpGet("character/{id}")]
+        public async Task<IActionResult> GetCharacter(int id)
+        {
+            var result = await _services.GetByIDAsync(id);
+
+            return result.ParseResult();
+        }
+
         //[HttpPost("graphql")]
         //public async Task<IActionResult> Post([FromBody] GraphQLParameter query)
         //{

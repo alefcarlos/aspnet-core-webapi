@@ -1,7 +1,10 @@
 ﻿using Demo.Core.Contracts.DragonBall.Request;
 using Demo.Core.Data.MySql.Entities;
 using Demo.Core.Data.MySql.Repositories;
+using Framework.Data.CacheProviders;
+using Framework.Data.CacheProviders.Redis;
 using Framework.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace Demo.Core.Services
@@ -10,10 +13,12 @@ namespace Demo.Core.Services
     {
         private readonly ICharacterRepository _characterRepository;
         private readonly IFamilyRepository _familyRepository;
+        private readonly IRedisCacheProvider _redisProvider;
 
-        public CharacterServices(ICharacterRepository characterRepository, IFamilyRepository familyRepository)
+        public CharacterServices(ICharacterRepository characterRepository, IFamilyRepository familyRepository, IRedisCacheProvider redisProvider)
         {
             _familyRepository = familyRepository;
+            _redisProvider = redisProvider;
             _characterRepository = characterRepository;
         }
 
@@ -35,6 +40,10 @@ namespace Demo.Core.Services
             return Created();
         }
 
-        public async Task<ServicesResult> GetByIDAsync(int characterId) => Ok(await _characterRepository.ReadAsync(characterId));
+        public async Task<ServicesResult> GetByIDAsync(int characterId)
+        {
+            var entity = await _redisProvider.GetAsync($"character:{characterId}", TimeSpan.FromSeconds(30), () => _characterRepository.ReadAsync(characterId));
+            return Ok(entity);
+        }
     }
 }
