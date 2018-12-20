@@ -18,6 +18,7 @@ namespace Framework.MessageBroker.RabbitMQ
             var factory = new ConnectionFactory();
             factory.Uri = new Uri(uri);
             factory.AutomaticRecoveryEnabled = true;
+            factory.RequestedHeartbeat = 60;
             Connection = factory.CreateConnection(appName);
         }
 
