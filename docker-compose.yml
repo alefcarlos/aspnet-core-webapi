@@ -1,28 +1,29 @@
 version: '3.7'
 services:
-  # web:
-  #   build: .
-  #   container_name: aspnet-core-webapi
-  #   restart: always
-  #   environment:
-  #     - JWT_ISS=http://localhost:8181/api/signup
-  #     - JWT_AUD=demo.api
-  #     - JWT_EXPIRATION=1800
-  #     - MONGO_URI=mongodb://mongodb:27017/clinfy
-  #     - MYSQL_CONNECTION=Server=mysqldb;Database=dbz;User=root;Password=root;
-  #     - REDIS_URI=redis,name=Demo.Api,defaultDatabase=1
-  #   ports:
-  #     - "8181:80"
-  #   links:
-  #     - mongodb
-  #     - mysqldb
-  #     - rabbitmq
-  #     - redi
-  #   depends_on:
-  #     - mongodb
-  #     - mysqldb
-  #     - rabbitmq
-  #     - redis
+  web:
+    build: .
+    container_name: aspnet-core-webapi
+    restart: always
+    environment:
+      - JWT_ISS=http://localhost:8181/api/signup
+      - JWT_AUD=demo.api
+      - JWT_EXPIRATION=1800
+      - MONGO_URI=mongodb://mongodb:27017/clinfy
+      - MYSQL_CONNECTION=Server=mysqldb;Database=dbz;User=root;Password=root;
+      - REDIS_URI=redis,name=Demo.Api,defaultDatabase=1
+      - RABBITMQ_URI=amqp://guest:guest@rabbitmq
+    ports:
+      - "8181:80"
+    links:
+      - mongodb
+      - mysqldb
+      - rabbitmq
+      - redis
+    depends_on:
+      - mongodb
+      - mysqldb
+      - rabbitmq
+      - redis
   mongodb:
     image: mongo
     container_name: "mongodb"
