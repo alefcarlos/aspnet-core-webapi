@@ -40,10 +40,13 @@ namespace Framework.WebAPI.Hosting
 
             services.AddHealthCheck();
 
-            services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddFluentValidation();
-                //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
+            services.AddMvc(o =>
+            {
+                o.InputFormatters.Add(new ImageRawRequestBodyFormatter());
+                o.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddFluentValidation();
+            //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
             services.AddApiVersion();
             services.AddDocumentation();
