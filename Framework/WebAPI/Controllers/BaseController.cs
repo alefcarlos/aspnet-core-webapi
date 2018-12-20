@@ -20,29 +20,29 @@ namespace Framework.WebAPI
         /// <returns></returns>
         protected string GetUserEmail() => HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
 
-        protected IActionResult ParseResult(ServicesResult result)
-        {
-            if (result == null)
-                throw new ArgumentException("Informe um result", "result");
+        // protected IActionResult ParseResult(ServicesResult result)
+        // {
+        //     if (result == null)
+        //         throw new ArgumentException("Informe um result", "result");
 
-            if (result.Success && result.Data == null)
-                return NoContent();
+        //     if (result.Success && result.Data == null)
+        //         return NoContent();
 
-            if (result.Success && result.Data != null)
-                return Ok(result.Data);
+        //     if (result.Success && result.Data != null)
+        //         return Ok(result.Data);
 
-            var reponse = new NotOkDefaultReponse
-            {
-                Message = result.Error
-            };
+        //     var reponse = new NotOkDefaultReponse
+        //     {
+        //         Message = result.Error
+        //     };
 
-            return new ObjectResult(reponse)
-            {
-                StatusCode = (int)result.StatusCode
-            };
-        }
+        //     return new ObjectResult(reponse)
+        //     {
+        //         StatusCode = (int)result.StatusCode
+        //     };
+        // }
 
-        protected IActionResult ParseResult(ServicesResult result, string actionName)
+        protected IActionResult ParseResult(ServicesResult result, string actionName = "")
         {
             if (result == null)
                 throw new ArgumentException("Informe um result", "result");
@@ -62,6 +62,14 @@ namespace Framework.WebAPI
 
             if (result.Data == null)
                 return NoContent();
+
+            if (string.IsNullOrWhiteSpace(actionName))
+            {
+                return new OkObjectResult(result.Data)
+                {
+                    StatusCode = (int)result.StatusCode
+                };
+            }
 
             //Obter o valor da prop ID
             var idProp = result.Data.GetType().GetProperty("ID");

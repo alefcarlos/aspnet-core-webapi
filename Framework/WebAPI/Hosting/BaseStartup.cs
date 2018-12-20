@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace Framework.WebAPI.Hosting
@@ -45,13 +46,14 @@ namespace Framework.WebAPI.Hosting
                 o.InputFormatters.Add(new ImageRawRequestBodyFormatter());
                 o.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddFluentValidation();
+                .AddFluentValidation()
+                .AddJsonOptions(o => o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore);
             //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
             services.AddApiVersion();
             services.AddDocumentation();
 
-            services.AddSingleton<JsonSerializer>();
+            services.AddSingleton<JsonSerializerCommon>();
 
             AfterConfigureServices(services);
         }

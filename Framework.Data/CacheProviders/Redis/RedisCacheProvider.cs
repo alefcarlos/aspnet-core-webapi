@@ -8,10 +8,10 @@ namespace Framework.Data.CacheProviders.Redis
     public class RedisCacheProvider : IRedisCacheProvider
     {
         private readonly IDatabase _database;
-        private readonly JsonSerializer _serializer;
+        private readonly JsonSerializerCommon _serializer;
         // private readonly CommandFlags _readFlag;
 
-        public RedisCacheProvider(RedisConnectionWrapper connectionWrapper, ConfigurationOptions settings, JsonSerializer serializer)
+        public RedisCacheProvider(RedisConnectionWrapper connectionWrapper, ConfigurationOptions settings, JsonSerializerCommon serializer)
         {
             _database = connectionWrapper.Database(settings.DefaultDatabase);
             _serializer = serializer;

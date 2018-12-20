@@ -4,11 +4,11 @@ using Newtonsoft.Json.Serialization;
 
 namespace Framework.Core.Serializer
 {
-    public class JsonSerializer : ISerializer
+    public class JsonSerializerCommon : ISerializer
     {
         private readonly JsonSerializerSettings _settings;
 
-        public JsonSerializer()
+        public JsonSerializerCommon()
         {
             _settings = new Newtonsoft.Json.JsonSerializerSettings
             {

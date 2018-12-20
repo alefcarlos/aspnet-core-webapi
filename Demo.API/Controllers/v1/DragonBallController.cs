@@ -58,7 +58,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.CreateRelative(id, request);
 
-            return ParseResult(result);
+            return ParseResult(result, "");
         }
 
         /// <summary>
