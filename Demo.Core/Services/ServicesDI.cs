@@ -13,6 +13,7 @@ namespace Demo.Core.Services
             services.AddSingleton<ISignInServices, SignInServices>();
             services.AddSingleton<ISignUpServices, SignUpServices>();
             services.AddSingleton<IProfileServices, ProfileServices>();
+            services.AddSingleton<IValuesServices, ValuesServices>();
 
             services.AddScoped<ICharacterServices, CharacterServices>();
             
