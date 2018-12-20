@@ -41,7 +41,7 @@ namespace Demo.API
             services.AddRedis();
 
             //RabbitMQ
-            services.AddRabbitMQ("demo.api");
+            services.AddRabbitBroker("demo.api");
         }
 
         public override void BeforeConfigureApp(IApplicationBuilder app, IHostingEnvironment env)
