@@ -7,10 +7,13 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="2.2.0" />
     <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="2.2.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="2.2.2" />
     <PackageReference Include="AspNetCore.HealthChecks.System" Version="2.2.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.7.2" />
     <PackageReference Include="MySql.Data" Version="8.0.13" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>

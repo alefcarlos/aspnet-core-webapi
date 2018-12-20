@@ -1,15 +1,7 @@
 ﻿using Demo.Core.Contracts.DragonBall.Request;
-using Demo.Core.Contracts.GraphQL;
-using Demo.Core.GraphQL;
 using Demo.Core.Services;
 using Framework.WebAPI;
-using GraphQL;
-using GraphQL.Types;
-using GraphQL.Validation;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Demo.API.Controllers.v1
@@ -44,7 +36,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.CreateAsync(request);
 
-            return result.ParseResult();
+            return ParseResult(result, nameof(GetCharacter));
         }
 
 
@@ -58,7 +50,19 @@ namespace Demo.API.Controllers.v1
         {
             var result = await _services.CreateRelative(id, request);
 
-            return result.ParseResult();
+            return ParseResult(result, "");
+        }
+
+        /// <summary>
+        /// Obtém um determinado personagem por ID
+        /// </summary>
+        /// <param name="id">Código do personagem</param>
+        [HttpGet("character/{id}")]
+        public async Task<IActionResult> GetCharacter(int id)
+        {
+            var result = await _services.GetByIDAsync(id);
+
+            return ParseResult(result);
         }
 
         //[HttpPost("graphql")]

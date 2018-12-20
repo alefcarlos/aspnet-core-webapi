@@ -1,6 +1,6 @@
 # aspnet-core-webapi
 
-Esse é um projeto para futuras consultas de técnicas empregadas com ASP.NET Core 2.2.
+Esse é um projeto para futuras consultas de técnicas empregadas com ASP.NET Core 2.2 aplicando [API-Guidelines](https://github.com/Microsoft/api-guidelines) da Microsoft.
 
 Técnicas
 
@@ -9,13 +9,23 @@ Técnicas
 - [x] Swagger
 - [x] Versionamento de API
 - [x] Docker
-- [x] HealthCheck
+- [x] HealthCheck - Utilizando a lib [Xabaril/AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
+  - Acessar a url /healthz no browser
 - [x] FluentValidation
 - [x] GraphQL
     - Acessar a url /ui/playground no browser
 - [x] EF
     - [x] MySQL 
 	- [x] Migrations
+- [ ] Resiliência requisições Http(utilizando Polly)
+  - [x] Retry
+  - [x] Timeout
+  - [ ] CircuitBreaker
+- [x] Caching
+  - [x] Redis - Baseado [nessa](https://ruhul.wordpress.com/2014/07/23/use-redis-as-cache-provider/ ) implementação
+- [x] MessageBrokers 
+  - [x] RabbitMQ - Publish/Subscribe Pattern
+- SonarQube
 
 # GraphQL
 
@@ -90,4 +100,6 @@ docker-compose up
 
 A porta do container é 80, porém estará pública na porta 8181.
 
-E acessar a página [http://localhost:8181/swagger/index.html](http://localhost:8181/swagger/index.html)
+E acessar a página [http://localhost:8181/index.html](http://localhost:8181/index.html)
+
+## SonarQube

@@ -1,5 +1,6 @@
 ﻿using dotenv.net;
 using FluentValidation.AspNetCore;
+using Framework.Core.Serializer;
 using Framework.WebAPI.Documetation;
 using Framework.WebAPI.HealthCheck;
 using Framework.WebAPI.Hosting.Cors;
@@ -13,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace Framework.WebAPI.Hosting
@@ -38,13 +41,19 @@ namespace Framework.WebAPI.Hosting
 
             services.AddHealthCheck();
 
-            services.AddMvc(o => o.InputFormatters.Add(new ImageRawRequestBodyFormatter()))
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddFluentValidation();
-                //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
+            services.AddMvc(o =>
+            {
+                o.InputFormatters.Add(new ImageRawRequestBodyFormatter());
+                o.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddFluentValidation()
+                .AddJsonOptions(o => o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore);
+            //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
             services.AddApiVersion();
             services.AddDocumentation();
+
+            services.AddSingleton<JsonSerializerCommon>();
 
             AfterConfigureServices(services);
         }
@@ -55,7 +64,6 @@ namespace Framework.WebAPI.Hosting
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
         {
-
             BeforeConfigureApp(app, env);
 
             app.UseCustomCors();

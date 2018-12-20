@@ -40,7 +40,7 @@ namespace Demo.API.Controllers.v1
         {
             var result = _services.GenerateToken(request);
 
-            return result.ParseResult();
+            return ParseResult(result);
         }
 
     }

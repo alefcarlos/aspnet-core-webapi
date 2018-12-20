@@ -21,6 +21,7 @@ namespace Framework.WebAPI.Versioning
             {
                 o.ReportApiVersions = true;
                 o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
             });
 
 
