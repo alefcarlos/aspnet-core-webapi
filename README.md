@@ -98,6 +98,6 @@ docker-compose up
 
 A porta do container é 80, porém estará pública na porta 8181.
 
-E acessar a página [http://localhost:8181/swagger/index.html](http://localhost:8181/swagger/index.html)
+E acessar a página [http://localhost:8181/index.html](http://localhost:8181/index.html)
 
 ## SonarQube
