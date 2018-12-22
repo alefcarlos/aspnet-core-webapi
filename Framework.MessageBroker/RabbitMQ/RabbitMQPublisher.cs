@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Framework.Core.Serializer;
@@ -18,24 +20,31 @@ namespace Framework.MessageBroker.RabbitMQ
 
         public void Publish<T>(T model) where T : BaseMessage
         {
-            var queueName = typeof(T).FullName;
             var json = _serializer.Serialize(model);
             var encoded = Encoding.UTF8.GetBytes(json);
 
             using (var channel = _connection.CreateModel())
             {
-                QueueDeclare(channel, queueName);
+                var options = RabbitMQExchangeOptions.Build<T>();
 
-                var properties = channel.CreateBasicProperties();
-                properties.Persistent = true;
-
-                channel.BasicPublish(
-                                    exchange: string.Empty,
-                                    routingKey: queueName,
-                                    basicProperties: properties,
-                                    body: encoded);
+                BasicPublish(channel, options, encoded);
             }
+        }
 
+        private void BasicPublish(IModel channel, RabbitMQExchangeOptions options, byte[] body)
+        {
+            var properties = channel.CreateBasicProperties();
+            properties.Persistent = true;
+
+            channel.CreateModels(options);
+
+            var routingKey = options.ExchangeType == "default" ? options.QueueName : options.RoutingKey;
+
+            channel.BasicPublish(
+                                exchange: options.ExchangeName,
+                                routingKey: routingKey,
+                                basicProperties: properties,
+                                body: body);
         }
 
         public async Task PublishAsync<T>(T model) where T : BaseMessage
@@ -43,13 +52,5 @@ namespace Framework.MessageBroker.RabbitMQ
             await Task.Run(() => { Publish(model); });
         }
 
-        private void QueueDeclare(IModel channel, string name)
-        {
-            channel.QueueDeclare(queue: name,
-                        durable: true,
-                        exclusive: false,
-                        autoDelete: false,
-                        arguments: null);
-        }
     }
 }
