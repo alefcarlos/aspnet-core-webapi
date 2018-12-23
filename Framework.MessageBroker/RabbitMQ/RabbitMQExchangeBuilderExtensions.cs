@@ -44,7 +44,7 @@ namespace Framework.MessageBroker.RabbitMQ
         {
             channel.QueueBind(queue: options.QueueName,
                               exchange: options.ExchangeName,
-                              routingKey: string.Empty);
+                              routingKey: options.RoutingKey);
         }
     }
 }

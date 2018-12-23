@@ -32,8 +32,8 @@ namespace Demo.Core.Services
                 Idade = 18
             };
 
-            await _publisher.PublishAsync(message);
-            await _publisher.PublishAsync(named);
+            // await _publisher.PublishAsync(message);
+            // await _publisher.PublishAsync(named);
             await _publisher.PublishAsync(direct);
 
             return Created(message.MessageId);

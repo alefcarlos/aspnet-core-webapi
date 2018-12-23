@@ -10,6 +10,16 @@
                 "${workspaceFolder}/Demo.API/Demo.API.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-consumer",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Demo.Consumer.HandleMessages/Demo.Consumer.HandleMessages.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

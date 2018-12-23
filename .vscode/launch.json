@@ -41,6 +41,17 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "name": "Demo.Consumer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-consumer",
+            "program": "${workspaceFolder}/Demo.Consumer.HandleMessages/bin/Debug/netcoreapp2.2/Demo.Consumer.HandleMessages.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Demo.Consumer.HandleMessages",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         }
     ,]
 }

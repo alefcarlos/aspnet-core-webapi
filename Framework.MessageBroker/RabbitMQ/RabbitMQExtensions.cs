@@ -5,18 +5,24 @@ namespace Framework.MessageBroker.RabbitMQ
 {
     public static class RabbitMQExtensions
     {
-        public static IServiceCollection AddRabbitBroker(this IServiceCollection services, string appName)
+        public static IServiceCollection AddRabbitBroker(this IServiceCollection services, string appName, bool addHealthCheck = true)
         {
-            //Cria conexao singleton do RabbitMQ
+            //Adicionar publisher como singleton, pois devemos sempre compartilhar a conexão TCP
             services.AddSingleton<RabbitMQConnectionWrapper>((provider) => new RabbitMQConnectionWrapper(appName));
 
-            //Adicionar publisher
+
             services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
 
-            var uri = CommonHelpers.GetValueFromEnv<string>("RABBITMQ_URI");
+            //Adicionar como transiente para garantir que NUNCA compartilharemos as intâncias dos channels por thread
+            services.AddTransient<IRabbitMQSubscriber, RabbitMQSubscriber>();
 
-            services.AddHealthChecks()
-                .AddRabbitMQ(uri, "rabbitmq", tags: new string[] { "messagebroker", "rabbitmq" });
+            if (addHealthCheck)
+            {
+                var uri = CommonHelpers.GetValueFromEnv<string>("RABBITMQ_URI");
+
+                services.AddHealthChecks()
+                    .AddRabbitMQ(uri, "rabbitmq", tags: new string[] { "messagebroker", "rabbitmq" });
+            }
 
             return services;
         }

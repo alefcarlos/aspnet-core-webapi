@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Framework.Core.Serializer;
@@ -12,10 +10,12 @@ namespace Framework.MessageBroker.RabbitMQ
         private readonly IConnection _connection;
         private readonly JsonSerializerCommon _serializer;
 
+
         public RabbitMQPublisher(RabbitMQConnectionWrapper connection, JsonSerializerCommon serializer)
         {
             _connection = connection.Connection;
             _serializer = serializer;
+
         }
 
         public void Publish<T>(T model) where T : BaseMessage
