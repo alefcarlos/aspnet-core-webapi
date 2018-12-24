@@ -36,7 +36,6 @@ namespace Framework.Services
             Error = string.Empty;
         }
 
-
         public void SetData(object data) => Data = data;
     }
 }

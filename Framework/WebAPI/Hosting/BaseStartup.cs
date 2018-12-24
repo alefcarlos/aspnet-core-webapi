@@ -44,7 +44,6 @@ namespace Framework.WebAPI.Hosting
             services.AddMvc(o =>
             {
                 o.InputFormatters.Add(new ImageRawRequestBodyFormatter());
-                o.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation()
                 .AddJsonOptions(o => o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore);
