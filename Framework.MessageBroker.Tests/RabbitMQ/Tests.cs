@@ -1,22 +1,27 @@
-using System.Threading;
 using Framework.MessageBroker.RabbitMQ;
+using Framework.MessageBroker.RabbitMQ.Explorer;
 using Framework.MessageBroker.Tests.RabbitMQ.Messages;
 using Framework.Test;
-using Xunit;
 using Shouldly;
+using System.Threading;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Framework.MessageBroker.Tests.RabbitMQ
 {
     public class Tests : BaseTest<Startup>
     {
         private readonly IRabbitMQPublisher _publisher;
+        private readonly IRabbitMQExplorer _rabbitExplorer;
+
         public Tests()
         {
             _publisher = GetService<IRabbitMQPublisher>();
+            _rabbitExplorer = GetService<IRabbitMQExplorer>();
         }
 
         [Fact]
-        public void PublisheAndConsumeDefault()
+        public async Task PublisheAndConsumeDefault()
         {
             //Arrange
             var subscriber = GetService<IRabbitMQSubscriber>();
@@ -25,9 +30,12 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             {
                 Campo = "PublisheAndConsumeDefault"
             };
+            var options = RabbitMQExchangeOptions.Build<DefaultMessage>();
 
             //Act
-            _publisher.Publish(message);
+            var queueGenerated = await _rabbitExplorer.GetQueue(options.QueueName);
+
+            await _publisher.PublishAsync(message);
             subscriber.StartConsume<DefaultMessage>((msg) =>
             {
                 publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
@@ -38,6 +46,9 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             subscriber.Dispose();
 
             //Assert
+            queueGenerated.ShouldNotBeNull();
+            queueGenerated.name.ShouldBe(options.QueueName);
+            queueGenerated.durable.ShouldBe(options.Durable);
             publishWithSuccess.ShouldBeTrue();
         }
     }

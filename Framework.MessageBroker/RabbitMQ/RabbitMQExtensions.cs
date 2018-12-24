@@ -1,4 +1,5 @@
 using Framework.Core.Helpers;
+using Framework.MessageBroker.RabbitMQ.Explorer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.MessageBroker.RabbitMQ
@@ -15,6 +16,8 @@ namespace Framework.MessageBroker.RabbitMQ
 
             //Adicionar como transiente para garantir que NUNCA compartilharemos as intâncias dos channels por thread
             services.AddTransient<IRabbitMQSubscriber, RabbitMQSubscriber>();
+
+            services.AddHttpClient<IRabbitMQExplorer, RabbitMQExplorer>();
 
             if (addHealthCheck)
             {
