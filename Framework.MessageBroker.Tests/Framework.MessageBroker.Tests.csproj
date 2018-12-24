@@ -15,4 +15,15 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Test\Framework.Test.csproj" />
+    <ProjectReference Include="..\Framework.MessageBroker\Framework.MessageBroker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update=".env">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

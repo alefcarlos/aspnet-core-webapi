@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.ConsoleApp", "Fra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.MessageBroker.Tests", "Framework.MessageBroker.Tests\Framework.MessageBroker.Tests.csproj", "{AC88B4F9-81A1-4999-ABD6-415486E8496F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Test", "Framework.Test\Framework.Test.csproj", "{2628073C-34A5-4639-A307-B1E1A2FABD87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{AC88B4F9-81A1-4999-ABD6-415486E8496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC88B4F9-81A1-4999-ABD6-415486E8496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC88B4F9-81A1-4999-ABD6-415486E8496F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
