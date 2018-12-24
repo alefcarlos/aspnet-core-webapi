@@ -47,7 +47,6 @@ namespace Framework.WebAPI.Hosting
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation()
                 .AddJsonOptions(o => o.SerializerSettings.NullValueHandling = NullValueHandling.Ignore);
-            //.ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
             services.AddApiVersion();
             services.AddDocumentation();

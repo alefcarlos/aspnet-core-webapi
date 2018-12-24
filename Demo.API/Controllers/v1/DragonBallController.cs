@@ -11,7 +11,7 @@ namespace Demo.API.Controllers.v1
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("v{api-version:apiVersion}/[controller]")]
+    [Route("v{version:apiVersion}/[controller]")]
     public class DragonBallController : BaseController
     {
         private readonly ICharacterServices _services;

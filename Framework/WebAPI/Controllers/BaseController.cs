@@ -78,7 +78,7 @@ namespace Framework.WebAPI
 
             var idValue = idProp.GetValue(result.Data);
 
-            return CreatedAtAction(actionName, new { id = idValue }, result.Data);
+            return CreatedAtAction(actionName, new { id = idValue, version = Request.HttpContext.GetRequestedApiVersion().ToString() }, result.Data);
         }
     }
 }
