@@ -21,7 +21,7 @@ namespace Framework.Data.MongoDB
             services.AddSingleton(mongoConnection);
 
             services.AddHealthChecks()
-                .AddMongoDb(mongoUri, "mongodb", tags: new string[] { "db", "mongodb" });
+                .AddMongoDb(mongoUri, "mongodb", failureStatus: null, tags: new string[] { "db", "mongodb" });
 
             return services;
         }
