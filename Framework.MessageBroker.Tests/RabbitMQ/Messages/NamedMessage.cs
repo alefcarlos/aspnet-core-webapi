@@ -3,8 +3,8 @@ using Framework.MessageBroker.RabbitMQ;
 
 namespace Framework.MessageBroker.Tests.RabbitMQ.Messages
 {
-    [RabbitMQProperties(Durable = true, QueueName = "test_named", ExchangeType = EExchangeType.Default)]
-    public class TesteMessageNamed : BaseMessage
+    [RabbitMQProperties(Durable = true, QueueName = "test_named")]
+    public class NamedMessage : BaseMessage
     {
         public string Campo { get; set; }
     }

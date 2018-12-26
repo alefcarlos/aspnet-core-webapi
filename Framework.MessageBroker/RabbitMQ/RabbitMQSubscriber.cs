@@ -23,7 +23,7 @@ namespace Framework.MessageBroker.RabbitMQ
             _logger = logger;
         }
 
-        public void StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null, TaskCreationOptions runningOpt = TaskCreationOptions.None) where T : BaseMessage
+        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null, TaskCreationOptions runningOpt = TaskCreationOptions.None) where T : BaseMessage
         {
             _channel = _connection.CreateModel();
 
@@ -60,6 +60,8 @@ namespace Framework.MessageBroker.RabbitMQ
             _channel.BasicConsume(queue: options.QueueName,
                 autoAck: false,
                 consumer: consumer);
+
+            return options;
         }
 
         public void Dispose()

@@ -55,5 +55,29 @@ namespace Framework.MessageBroker.RabbitMQ.Explorer
 
             return obj;
         }
+
+        public async Task<RabbitMQExchangeDetail> GetExchange(string name, string vhost = "%f2")
+        {
+            var response = await _client.GetAsync($"/api/exchanges/{vhost}/{name}");
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            var obj = await response.Content.ReadAsAsync<RabbitMQExchangeDetail>();
+
+            return obj;
+        }
+
+        public async Task<List<RabbitMQExchangeDetail>> GetExchanges(string vhost = "%f2")
+        {
+            var response = await _client.GetAsync("/api/exchanges/");
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            var obj = await response.Content.ReadAsAsync<List<RabbitMQExchangeDetail>>();
+
+            return obj;
+        }
     }
 }

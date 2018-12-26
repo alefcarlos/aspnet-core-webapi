@@ -1,7 +1,7 @@
-using System.Text;
-using System.Threading.Tasks;
 using Framework.Core.Serializer;
 using RabbitMQ.Client;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Framework.MessageBroker.RabbitMQ
 {
@@ -9,7 +9,6 @@ namespace Framework.MessageBroker.RabbitMQ
     {
         private readonly IConnection _connection;
         private readonly JsonSerializerCommon _serializer;
-
 
         public RabbitMQPublisher(RabbitMQConnectionWrapper connection, JsonSerializerCommon serializer)
         {
@@ -20,12 +19,36 @@ namespace Framework.MessageBroker.RabbitMQ
 
         public void Publish<T>(T model) where T : BaseMessage
         {
+            ProxyPublish(model);
+        }
+
+        public async Task PublishAsync<T>(T model) where T : BaseMessage
+        {
+            await Task.Run(() => { Publish(model); });
+        }
+
+        public void Publish<T>(T model, string queueName) where T : BaseMessage
+        {
+            ProxyPublish(model, queueName);
+        }
+
+        public async Task PublishAsync<T>(T model, string queueName) where T : BaseMessage
+        {
+            await Task.Run(() => { ProxyPublish(model, queueName); });
+        }
+
+
+        private void ProxyPublish<T>(T model, string queueName = "") where T : BaseMessage
+        {
             var json = _serializer.Serialize(model);
             var encoded = Encoding.UTF8.GetBytes(json);
 
             using (var channel = _connection.CreateModel())
             {
                 var options = RabbitMQExchangeOptions.Build<T>();
+
+                if (!string.IsNullOrWhiteSpace(queueName))
+                    options.QueueName = queueName;
 
                 BasicPublish(channel, options, encoded);
             }
@@ -45,11 +68,6 @@ namespace Framework.MessageBroker.RabbitMQ
                                 routingKey: routingKey,
                                 basicProperties: properties,
                                 body: body);
-        }
-
-        public async Task PublishAsync<T>(T model) where T : BaseMessage
-        {
-            await Task.Run(() => { Publish(model); });
         }
 
     }

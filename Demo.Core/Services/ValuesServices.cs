@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using Demo.Core.Contracts.Values;
 using Demo.Core.Messages.RabbitMQ;
 using Framework.MessageBroker.RabbitMQ;
 using Framework.Services;
+using System.Threading.Tasks;
 
 namespace Demo.Core.Services
 {
@@ -22,19 +22,8 @@ namespace Demo.Core.Services
                 Campo = request.Campo
             };
 
-            var named = new TesteMessageNamed
-            {
-                Campo = "named"
-            };
 
-            var direct = new TestDirectMessage
-            {
-                Idade = 18
-            };
-
-            // await _publisher.PublishAsync(message);
-            // await _publisher.PublishAsync(named);
-            await _publisher.PublishAsync(direct);
+            await _publisher.PublishAsync(message);
 
             return Created(message.MessageId);
         }

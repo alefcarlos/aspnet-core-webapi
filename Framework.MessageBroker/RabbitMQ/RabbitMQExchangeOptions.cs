@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Framework.MessageBroker.RabbitMQ
 {
-    public class RabbitMQExchangeOptions
+    public class RabbitMQExchangeOptions : IExchangeOptions
     {
         public string ExchangeName { get; set; }
 
@@ -51,7 +51,7 @@ namespace Framework.MessageBroker.RabbitMQ
             var queueName = defaultQueueName;
 
             if (info.GenerateQueueName)
-                queueName = string.Empty;
+                queueName = $"{typeof(T).Name}-{Guid.NewGuid().ToString("N")}";
             else
                 queueName = string.IsNullOrWhiteSpace(info.QueueName) ? defaultQueueName : info.QueueName; //Se foi informado um nome para a fila, usar.
 

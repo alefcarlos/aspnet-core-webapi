@@ -9,7 +9,7 @@ namespace Demo.Consumer.HandleMessages
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddRabbitBroker("demo.consumer", false);
-            services.AddHostedService<TesteMessageNamedHandler>();
+            services.AddHostedService<TesteMessageHandler>();
         }
     }
 }
