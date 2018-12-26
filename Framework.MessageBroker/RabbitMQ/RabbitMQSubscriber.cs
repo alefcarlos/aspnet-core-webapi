@@ -67,7 +67,10 @@ namespace Framework.MessageBroker.RabbitMQ
         public void Dispose()
         {
             if (_channel != null && _channel.IsOpen)
+            {
+                _channel.Close();
                 _channel.Dispose();
+            }
         }
     }
 }
