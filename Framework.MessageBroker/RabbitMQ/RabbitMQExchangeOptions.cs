@@ -47,14 +47,17 @@ namespace Framework.MessageBroker.RabbitMQ
             else if (!string.IsNullOrWhiteSpace(info.ExchangeName))
                 exchangeName = info.ExchangeName;
 
-            //Validar se devemos criar automáticamente o nome da fila
             var queueName = defaultQueueName;
 
+            //Validar se devemos criar automáticamente o nome da fila
             if (info.GenerateQueueName)
                 queueName = $"{typeof(T).Name}-{Guid.NewGuid().ToString("N")}";
             else
                 queueName = string.IsNullOrWhiteSpace(info.QueueName) ? defaultQueueName : info.QueueName; //Se foi informado um nome para a fila, usar.
 
+            //Se for exchangetype != default e GenerateQueueName, então deixa o Rabit gerar o nome
+            if (info.GenerateQueueName && info.ExchangeType != EExchangeType.Default)
+                queueName = string.Empty;
 
             if (info.ExchangeType != EExchangeType.Default && string.IsNullOrWhiteSpace(exchangeName))
                 throw new ArgumentNullException("ExchangeName", "O nome da Exchange deve ser informado.");

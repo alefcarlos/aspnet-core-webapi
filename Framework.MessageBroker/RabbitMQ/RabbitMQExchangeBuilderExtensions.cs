@@ -14,7 +14,7 @@ namespace Framework.MessageBroker.RabbitMQ
 
                 if (bindQueueToExchange)
                 {
-                    channel.CreateQueue(options);
+                    options.QueueName = channel.CreateQueue(options);
                     channel.BindQueue(options);
                 }
             }
