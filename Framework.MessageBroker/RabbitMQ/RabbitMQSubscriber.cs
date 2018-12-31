@@ -1,10 +1,9 @@
-using System;
-using System.Text;
-using System.Threading.Tasks;
 using Framework.Core.Serializer;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System;
+using System.Text;
 
 namespace Framework.MessageBroker.RabbitMQ
 {
@@ -23,7 +22,7 @@ namespace Framework.MessageBroker.RabbitMQ
             _logger = logger;
         }
 
-        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null, TaskCreationOptions runningOpt = TaskCreationOptions.None) where T : BaseMessage
+        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null, ushort limit = 1) where T : BaseMessage
         {
             _channel = _connection.CreateModel();
 
@@ -31,6 +30,9 @@ namespace Framework.MessageBroker.RabbitMQ
 
             //Devemos realizar as associações da queue/exchange
             _channel.CreateModels(options, true);
+
+            if (limit > 0)
+                _channel.BasicQos(0, limit, false); //Limtiar por consumer
 
             _logger.LogInformation("Waiting for messages.");
             var consumer = new EventingBasicConsumer(_channel);
@@ -50,11 +52,12 @@ namespace Framework.MessageBroker.RabbitMQ
 
                 var result = factory(message);
 
+
                 if (result)
-                {
-                    _logger.LogInformation($"Message id {message.MessageId} is processed, acking....");
-                    _channel.BasicAck(ea.DeliveryTag, false);
-                }
+                    _channel.BasicAck(ea.DeliveryTag, false); //Devemos indicar que a mensagem foi processado com sucesso.
+                else
+                    //Devemos enviar a mensagem para a fila novamente, assim pode ser processado por outra instância desse consumer
+                    _channel.BasicReject(ea.DeliveryTag, true);
             };
 
             _channel.BasicConsume(queue: options.QueueName,
