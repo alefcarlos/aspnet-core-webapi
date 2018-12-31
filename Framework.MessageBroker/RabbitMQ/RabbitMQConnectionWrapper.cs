@@ -25,41 +25,7 @@ namespace Framework.MessageBroker.RabbitMQ
             factory.AutomaticRecoveryEnabled = true;
             factory.RequestedHeartbeat = 60;
 
-            // _logger = logger;
-            TryConnect();
-        }
-
-        private void TryConnect()
-        {
             Connection = factory.CreateConnection(_appName);
-            WatchConnectionHealth();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void WatchConnectionHealth()
-        {
-            Connection.ConnectionShutdown += (sender, e) =>
-            {
-                if (disposed) return;
-                Console.WriteLine("A RabbitMQ connection is shutdown. Trying to re-connect...");
-                TryConnect();
-            };
-
-            Connection.CallbackException += (sender, e) =>
-            {
-                if (disposed) return;
-                Console.WriteLine("A RabbitMQ connection throw exception. Trying to re-connect...");
-                TryConnect();
-            };
-
-            Connection.ConnectionBlocked += (sender, e) =>
-            {
-                if (disposed) return;
-                Console.WriteLine("A RabbitMQ connection is blocked. Trying to re-connect...");
-                TryConnect();
-            };
         }
 
         private void Dispose(bool disposing)
