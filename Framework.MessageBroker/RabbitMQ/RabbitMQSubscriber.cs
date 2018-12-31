@@ -1,3 +1,4 @@
+using Framework.Core.Helpers;
 using Framework.Core.Serializer;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
@@ -22,7 +23,7 @@ namespace Framework.MessageBroker.RabbitMQ
             _logger = logger;
         }
 
-        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null, ushort limit = 1) where T : BaseMessage
+        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null) where T : BaseMessage
         {
             _channel = _connection.CreateModel();
 
@@ -30,6 +31,9 @@ namespace Framework.MessageBroker.RabbitMQ
 
             //Devemos realizar as associações da queue/exchange
             _channel.CreateModels(options, true);
+
+            //Verificar se existe env configurando o limite de mensagens
+            var limit = CommonHelpers.GetValueFromEnv<ushort>("RABBIT_QOS", false);
 
             if (limit > 0)
                 _channel.BasicQos(0, limit, false); //Limtiar por consumer

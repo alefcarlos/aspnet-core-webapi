@@ -1,9 +1,9 @@
-using System.IO;
 using dotenv.net;
 using Framework.Core.Serializer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Framework.ConsoleApp
 {
@@ -28,7 +28,7 @@ namespace Framework.ConsoleApp
                .ConfigureServices((hostContext, services) =>
                {
                    services.AddSingleton<JsonSerializerCommon>();
-                    ConfigureServices(services);
+                   ConfigureServices(services);
                })
                .UseConsoleLifetime()
                .Build();

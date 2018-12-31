@@ -11,7 +11,6 @@ namespace Framework.MessageBroker.RabbitMQ
             //Adicionar publisher como singleton, pois devemos sempre compartilhar a conexão TCP
             services.AddSingleton<RabbitMQConnectionWrapper>((provider) => new RabbitMQConnectionWrapper(appName));
 
-
             services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
 
             //Adicionar como transiente para garantir que NUNCA compartilharemos as intâncias dos channels por thread

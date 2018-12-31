@@ -8,6 +8,9 @@ namespace Framework.Core.Helpers
         {
             var value = GetEnvironmentVariable(keyName, throwException);
 
+            if (string.IsNullOrWhiteSpace(value))
+                return default(T);
+
             return (T)Convert.ChangeType(value, typeof(T));
         }
 
