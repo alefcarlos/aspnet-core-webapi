@@ -1,5 +1,6 @@
 using Framework.Core.Serializer;
 using RabbitMQ.Client;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,6 +50,8 @@ namespace Framework.MessageBroker.RabbitMQ
 
                 if (!string.IsNullOrWhiteSpace(queueName))
                     options.QueueName = queueName;
+
+                model.MessageId = Guid.NewGuid();
 
                 BasicPublish(channel, options, encoded);
             }

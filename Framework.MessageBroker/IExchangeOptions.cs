@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Framework.MessageBroker
+﻿namespace Framework.MessageBroker
 {
+    /// <summary>
+    /// Inteface de possíveis configuração de gerenciamento de Exchange/Queue
+    /// </summary>
     public interface IExchangeOptions
     {
     }

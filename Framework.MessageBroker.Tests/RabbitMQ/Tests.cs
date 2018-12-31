@@ -35,7 +35,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             subscriber.StartConsume<DefaultMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
                 return true;
             });
             await _publisher.PublishAsync(message);
@@ -68,7 +68,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             var options = subscriber.StartConsume<NamedMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
                 return true;
             });
             var rabbitOptions = options as RabbitMQExchangeOptions;
@@ -105,7 +105,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             subscriber.StartConsume<DirectMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
                 return true;
             });
             await _publisher.PublishAsync(message);
@@ -146,7 +146,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             var options = subscriber.StartConsume<DefaultGeneratedNameMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
                 return true;
             });
             var rabbitOptions = options as RabbitMQExchangeOptions;
@@ -181,7 +181,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             var _options = subscriber.StartConsume<DirectedGeneratedNameMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
                 return true;
             });
             await _publisher.PublishAsync(message);
@@ -227,7 +227,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             //Act
             subscriber.StartConsume<DefaultRejectedMessage>((msg) =>
             {
-                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+                publishWithSuccess = msg.Campo == message.Campo;
 
                 return ++count == 2;
             });

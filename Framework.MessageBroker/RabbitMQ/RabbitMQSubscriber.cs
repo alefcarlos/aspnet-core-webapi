@@ -23,7 +23,21 @@ namespace Framework.MessageBroker.RabbitMQ
             _logger = logger;
         }
 
-        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<BaseMessage, T> msgBinder = null) where T : BaseMessage
+        private T DefaultMsgBinder<T>(byte[] data)
+        {
+            var message = default(T);
+            var json = "";
+
+            if (data != null)
+            {
+                json = Encoding.UTF8.GetString(data);
+                message = _serializer.Deserialize<T>(json);
+            }
+
+            return message;
+        }
+
+        public IExchangeOptions StartConsume<T>(Func<T, bool> factory, Func<byte[], T> msgBinder = null) where T : BaseMessage
         {
             _channel = _connection.CreateModel();
 
@@ -42,17 +56,14 @@ namespace Framework.MessageBroker.RabbitMQ
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += (m, ea) =>
             {
-                var message = default(T);
-                var json = "";
+                T message;
 
-                if (ea.Body != null)
-                {
-                    json = Encoding.UTF8.GetString(ea.Body);
-                    message = _serializer.Deserialize<T>(json);
-                }
+                if (msgBinder != null)
+                    message = msgBinder(ea.Body);
+                else
+                    message = DefaultMsgBinder<T>(ea.Body);
 
                 _logger.LogInformation($"New message, id {message.MessageId}");
-
 
                 var result = factory(message);
 

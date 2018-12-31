@@ -1,7 +1,6 @@
-using System;
 using Framework.Core.Helpers;
-using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
+using System;
 
 namespace Framework.MessageBroker.RabbitMQ
 {
