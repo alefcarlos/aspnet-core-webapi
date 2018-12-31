@@ -209,5 +209,43 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             queueGenerated.durable.ShouldBe(options.Durable);
             publishWithSuccess.ShouldBeTrue();
         }
+
+        [Fact]
+        public async Task PublisheAndConsumeDefaultRejectedMessage()
+        {
+            //Arrange
+            var subscriber = GetService<IRabbitMQSubscriber>();
+            bool publishWithSuccess = false;
+            int count = 0;
+
+            var message = new DefaultRejectedMessage
+            {
+                Campo = "PublisheAndConsumeDefaultRejectedMessage"
+            };
+            var options = RabbitMQExchangeOptions.Build<DefaultMessage>();
+
+            //Act
+            subscriber.StartConsume<DefaultRejectedMessage>((msg) =>
+            {
+                publishWithSuccess = msg.MessageId == message.MessageId && msg.Campo == message.Campo;
+
+                return ++count == 2;
+            });
+            await _publisher.PublishAsync(message);
+
+            Thread.Sleep(2000);
+            subscriber.Dispose();
+
+            //Assert
+            options.QueueName.ShouldNotBeNullOrWhiteSpace();
+
+            var queueGenerated = await _rabbitExplorer.GetQueue(options.QueueName);
+
+            queueGenerated.ShouldNotBeNull();
+            queueGenerated.name.ShouldBe(options.QueueName);
+            queueGenerated.durable.ShouldBe(options.Durable);
+            publishWithSuccess.ShouldBeTrue();
+            count.ShouldBe(2);
+        }
     }
 }
