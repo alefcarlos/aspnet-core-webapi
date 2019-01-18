@@ -19,7 +19,6 @@ namespace Framework.WebAPI.Documetation
                     options.DescribeAllEnumsAsStrings();
                     options.DescribeStringEnumsInCamelCase();
                     options.OperationFilter<CustomConfigurationOperationFilter>();
-                    options.OperationFilter<AddFileParamTypesOperationFilter>();
                     options.OperationFilter<AddResponseHeadersFilter>(); // [SwaggerResponseHeader]
                     options.DescribeAllParametersInCamelCase();
 
