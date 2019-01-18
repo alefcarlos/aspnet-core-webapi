@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Framework.Test\Framework.Test.csproj" />
     <ProjectReference Include="..\Demo.Core\Demo.Core.csproj" />
   </ItemGroup>
 

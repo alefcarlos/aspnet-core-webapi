@@ -38,7 +38,7 @@ namespace Demo.Core.Data.ApiClient.Google
 
             var obj = await response.Content.ReadAsAsync<GoogleGeoCodeView>();
 
-            if (obj.status != "OK")
+            if (!obj.status.Equals("OK", StringComparison.InvariantCultureIgnoreCase))
                 throw new HttpResponseException(new HttpResponseMessage
                 {
                     StatusCode =  HttpStatusCode.NotFound,
