@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 
 namespace Framework.WebAPI.Hosting.JWT
@@ -35,30 +36,33 @@ namespace Framework.WebAPI.Hosting.JWT
             {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(bearerOptions =>
+            }).AddJwtBearer(options =>
             {
-                var paramsValidation = bearerOptions.TokenValidationParameters;
-                paramsValidation.IssuerSigningKey = signingConfigurations.Key;
-                paramsValidation.ValidAudience = tokenConfigurations.Audience;
-                paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
 
-                // Valida a assinatura de um token recebido
-                paramsValidation.ValidateIssuerSigningKey = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    // Clock skew compensates for server time drift.
+                    // We recommend 5 minutes or less:
+                    ClockSkew = TimeSpan.FromMinutes(5),
+                    // Specify the key used to sign the token:
+                    IssuerSigningKey = signingConfigurations.Key,
+                    RequireSignedTokens = true,
+                    // Ensure the token hasn't expired:
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
 
-                // Verifica se um token recebido ainda é válido
-                paramsValidation.ValidateLifetime = true;
+                    ValidateAudience = true,
+                    ValidAudience = tokenConfigurations.Audience,
 
-                // Tempo de tolerância para a expiração de um token (utilizado
-                // caso haja problemas de sincronismo de horário entre diferentes
-                // computadores envolvidos no processo de comunicação)
-                paramsValidation.ClockSkew = TimeSpan.Zero;
+                    ValidIssuer = tokenConfigurations.Issuer
+                };
             });
 
             // Ativa o uso do token como forma de autorizar o acesso
             // a recursos deste projeto
             services.AddAuthorization(auth =>
             {
-                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                auth.AddPolicy(JwtBearerDefaults.AuthenticationScheme, new AuthorizationPolicyBuilder()
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser().Build());
             });

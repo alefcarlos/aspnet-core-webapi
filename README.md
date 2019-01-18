@@ -25,7 +25,7 @@ Técnicas
   - [x] Redis - Baseado [nessa](https://ruhul.wordpress.com/2014/07/23/use-redis-as-cache-provider/ ) implementação
 - [x] MessageBrokers 
   - [x] RabbitMQ
-    - [x] - Criação customizada de exchanges/queue customizadas por Atributos 
+    - [x] - Criação customizada de exchanges/queue por Atributos 
 - SonarQube
 
 # GraphQL
