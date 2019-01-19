@@ -16,8 +16,8 @@ namespace Demo.Core.Tests.Data.ApiClient
         };
 
         [Theory]
-        [InlineData("09071-483")]
-        [InlineData("09071-483")]
+        [InlineData("79086-160")]
+        [InlineData("65026-040")]
         public async Task GetGeoCodeByCEPAsync_ShouldSuccess(string cep)
         {
             //Arrange
