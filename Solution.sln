@@ -15,23 +15,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Data", "Framework.Data\Framework.Data.csproj", "{C3E9C67C-F9E3-4E6A-B0AF-7DB34018D8CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Data", "Framework.Data\Framework.Data.csproj", "{C3E9C67C-F9E3-4E6A-B0AF-7DB34018D8CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{1F5EC200-39E5-40E1-A916-A2B9309FBEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Core", "Framework.Core\Framework.Core.csproj", "{1F5EC200-39E5-40E1-A916-A2B9309FBEF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Core.Tests", "Demo.Core.Tests\Demo.Core.Tests.csproj", "{CBEF68F3-A69F-42D6-89FE-BA251B911306}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Core.Tests", "Demo.Core.Tests\Demo.Core.Tests.csproj", "{CBEF68F3-A69F-42D6-89FE-BA251B911306}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Core.Tests", "Framework.Core.Tests\Framework.Core.Tests.csproj", "{E6657CD1-CD93-4615-9E0C-E09A8629CC98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Core.Tests", "Framework.Core.Tests\Framework.Core.Tests.csproj", "{E6657CD1-CD93-4615-9E0C-E09A8629CC98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.MessageBroker", "Framework.MessageBroker\Framework.MessageBroker.csproj", "{5003F342-79EE-4175-A0A9-D4A4DF70C38C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.MessageBroker", "Framework.MessageBroker\Framework.MessageBroker.csproj", "{5003F342-79EE-4175-A0A9-D4A4DF70C38C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Consumer.HandleMessages", "Demo.Consumer.HandleMessages\Demo.Consumer.HandleMessages.csproj", "{A9A292CC-7458-4961-BF1B-E8A9C6D88577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Consumer.HandleMessages", "Demo.Consumer.HandleMessages\Demo.Consumer.HandleMessages.csproj", "{A9A292CC-7458-4961-BF1B-E8A9C6D88577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.ConsoleApp", "Framework.ConsoleApp\Framework.ConsoleApp.csproj", "{E48943FB-91DE-4E9E-A5B5-3D71E3533013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.ConsoleApp", "Framework.ConsoleApp\Framework.ConsoleApp.csproj", "{E48943FB-91DE-4E9E-A5B5-3D71E3533013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.MessageBroker.Tests", "Framework.MessageBroker.Tests\Framework.MessageBroker.Tests.csproj", "{AC88B4F9-81A1-4999-ABD6-415486E8496F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.MessageBroker.Tests", "Framework.MessageBroker.Tests\Framework.MessageBroker.Tests.csproj", "{AC88B4F9-81A1-4999-ABD6-415486E8496F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Test", "Framework.Test\Framework.Test.csproj", "{2628073C-34A5-4639-A307-B1E1A2FABD87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Test", "Framework.Test\Framework.Test.csproj", "{2628073C-34A5-4639-A307-B1E1A2FABD87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Data.Tests", "Framework.Data.Tests\Framework.Data.Tests.csproj", "{3EC1B7DE-AEB5-43F8-969F-316D7C74289E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2628073C-34A5-4639-A307-B1E1A2FABD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EC1B7DE-AEB5-43F8-969F-316D7C74289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EC1B7DE-AEB5-43F8-969F-316D7C74289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EC1B7DE-AEB5-43F8-969F-316D7C74289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EC1B7DE-AEB5-43F8-969F-316D7C74289E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

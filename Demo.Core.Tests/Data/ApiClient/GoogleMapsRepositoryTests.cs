@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+using Bogus;
 using Demo.Core.Data.ApiClient.Google;
+using Demo.Core.Data.ApiClient.Google.Views;
 using RichardSzalay.MockHttp;
 using Shouldly;
 using Xunit;
@@ -15,6 +17,16 @@ namespace Demo.Core.Tests.Data.ApiClient
             GeoCodeURI = "https://maps.googleapis.com/maps/api/geocode"
         };
 
+        static void FakerForSuccess(string cep)
+        {
+            // var latLongFaker = new Faker<Location>()
+            //     .RuleFor(l => l.lat, f => f.System.Radom. );
+
+            // var expectedResult = new Faker<GoogleGeoCodeView>()
+            //     .RuleFor(x => x.status, x => "ok")
+            //     .RuleFor();
+        }
+
         [Theory]
         [InlineData("79086-160")]
         [InlineData("65026-040")]
@@ -22,6 +34,22 @@ namespace Demo.Core.Tests.Data.ApiClient
         {
             //Arrange
             var mockHttp = new MockHttpMessageHandler();
+
+            // var expectedResult = new Faker<GoogleGeoCodeView>()
+            //     .RuleFor(x => x.status, x => "ok")
+            //     .RuleFor()
+            // {
+            //     status = "ok",
+            //     results = new Result[] {
+            //         new Result{
+            //               geometry = new Geometry{
+            //                    location = new Location{
+
+            //                    }
+            //               }
+            //         }
+            //     }
+            // };
 
             // Setup a respond for the user api (including a wildcard in the URL)
             mockHttp.When("https://maps.googleapis.com/maps/api/geocode/*")

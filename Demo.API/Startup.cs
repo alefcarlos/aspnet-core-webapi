@@ -38,7 +38,8 @@ namespace Demo.API
             services.AddGraphQLTypes();
 
             //Redis
-            services.AddRedis();
+            services.AddRedisCache();
+
 
             //RabbitMQ
             services.AddRabbitBroker("demo.api");

@@ -1,9 +1,9 @@
 ﻿using Demo.Core.Contracts.DragonBall.Request;
 using Demo.Core.Data.MySql.Entities;
 using Demo.Core.Data.MySql.Repositories;
-using Framework.Data.CacheProviders;
 using Framework.Data.CacheProviders.Redis;
 using Framework.Services;
+using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Threading.Tasks;
 
@@ -13,9 +13,9 @@ namespace Demo.Core.Services
     {
         private readonly ICharacterRepository _characterRepository;
         private readonly IFamilyRepository _familyRepository;
-        private readonly IRedisCacheProvider _redisProvider;
+        private readonly IDistributedCache  _redisProvider;
 
-        public CharacterServices(ICharacterRepository characterRepository, IFamilyRepository familyRepository, IRedisCacheProvider redisProvider)
+        public CharacterServices(ICharacterRepository characterRepository, IFamilyRepository familyRepository, IDistributedCache redisProvider)
         {
             _familyRepository = familyRepository;
             _redisProvider = redisProvider;
