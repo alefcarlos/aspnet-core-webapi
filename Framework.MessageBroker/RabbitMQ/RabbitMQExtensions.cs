@@ -23,7 +23,7 @@ namespace Framework.MessageBroker.RabbitMQ
                 var uri = CommonHelpers.GetValueFromEnv<string>("RABBITMQ_URI");
 
                 services.AddHealthChecks()
-                    .AddRabbitMQ(uri, "rabbitmq", tags: new string[] { "messagebroker", "rabbitmq" });
+                    .AddRabbitMQ(uri, name: "rabbitmq", tags: new string[] { "messagebroker", "rabbitmq" });
             }
 
             return services;
