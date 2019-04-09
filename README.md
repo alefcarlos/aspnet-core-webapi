@@ -10,7 +10,8 @@ Técnicas
 - [x] Versionamento de API
 - [x] Docker
 - [x] HealthCheck - Utilizando a lib [Xabaril/AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
-  - Acessar a url /healthz no browser
+  - Acessar o endpoint /healthz da api no browser
+  - Acessar a url http://localhost:8003/healthchecks-ui para visualizar um painel com o monitoramento, disponível somente com docker-compose
 - [x] FluentValidation
 - [x] GraphQL
     - Acessar a url /ui/playground no browser
