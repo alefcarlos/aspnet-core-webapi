@@ -113,7 +113,7 @@ Para o exemplo vamos utilizar o `docker stack` que tem suporte ao Kubernetes.
 Vamos buildar todos os nossos softwares:
 
 ```bash
-docker-compse build
+docker-compose build
 ```
 
 e começar a brincadeira criando o namespace que vamos utilizar:
