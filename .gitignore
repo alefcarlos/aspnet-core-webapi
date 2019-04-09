@@ -267,3 +267,5 @@ lcov.info
 lcov.opencover.xml
 .sonarqube
 coverage.opencover.xml
+
+.DS_STORE

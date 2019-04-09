@@ -104,6 +104,75 @@ A porta do container é 80, porém estará pública na porta 8181.
 
 E acessar a página [http://localhost:8181/index.html](http://localhost:8181/index.html)
 
+## k8s
+
+Para o exemplo vamos utilizar o `docker stack` que tem suporte ao Kubernetes.
+
+> Docker stack somente suporte imagens já buildadas
+
+Vamos buildar todos os nossos softwares:
+
+```bash
+docker-compse build
+```
+
+e começar a brincadeira criando o namespace que vamos utilizar:
+
+```bash
+kubectl create -f k8s/namespace.yaml
+```
+
+e então criar o stack:
+
+```bash
+docker stack deploy --namespace demo -c docker-compose.yml appstack
+```
+
+e vamos validar nosso deployment:
+
+```bash
+kubectl get all -n demo
+
+NAME                             READY     STATUS    RESTARTS   AGE
+pod/healthapp-78959fcf7b-5xj6b   1/1       Running   0          12s
+pod/mongodb-d5cc949f5-pqjqs      1/1       Running   0          12s
+pod/mysqldb-5c8dccbd78-w5f8l     1/1       Running   0          12s
+pod/rabbitmq-544d746545-hpm7d    1/1       Running   0          12s
+pod/redis-d56fc6bdf-bmmds        1/1       Running   0          12s
+pod/web-78bc8955d4-2sjkq         0/1       Error     0          12s
+
+NAME                          TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                          AGE
+service/healthapp             ClusterIP      None             <none>        55555/TCP                        12s
+service/healthapp-published   LoadBalancer   10.97.148.148    localhost     8083:30610/TCP                   9s
+service/mongodb               ClusterIP      None             <none>        55555/TCP                        9s
+service/mongodb-published     LoadBalancer   10.100.145.160   localhost     27017:30231/TCP                  12s
+service/mysqldb               ClusterIP      None             <none>        55555/TCP                        8s
+service/mysqldb-published     LoadBalancer   10.105.66.236    localhost     3306:30969/TCP                   12s
+service/rabbitmq              ClusterIP      None             <none>        55555/TCP                        12s
+service/rabbitmq-published    LoadBalancer   10.104.157.0     localhost     5672:31170/TCP,15672:31195/TCP   7s
+service/redis                 ClusterIP      None             <none>        55555/TCP                        7s
+service/redis-published       LoadBalancer   10.104.50.187    localhost     6379:30003/TCP                   12s
+service/web                   ClusterIP      None             <none>        55555/TCP                        12s
+service/web-published         LoadBalancer   10.104.37.39     localhost     8181:30589/TCP                   8s
+
+NAME                        DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/healthapp   1         1         1            1           13s
+deployment.apps/mongodb     1         1         1            1           13s
+deployment.apps/mysqldb     1         1         1            1           12s
+deployment.apps/rabbitmq    1         1         1            1           13s
+deployment.apps/redis       1         1         1            1           13s
+deployment.apps/web         1         1         1            0           13s
+
+NAME                                   DESIRED   CURRENT   READY     AGE
+replicaset.apps/healthapp-78959fcf7b   1         1         1         13s
+replicaset.apps/mongodb-d5cc949f5      1         1         1         12s
+replicaset.apps/mysqldb-5c8dccbd78     1         1         1         12s
+replicaset.apps/rabbitmq-544d746545    1         1         1         13s
+replicaset.apps/redis-d56fc6bdf        1         1         1         13s
+replicaset.apps/web-78bc8955d4         1         1         0         13s
+```
+
+
 ## SonarQube
 
 ### Configuração

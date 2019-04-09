@@ -1,9 +1,13 @@
-version: '3.7'
+version: '3.3'
+
 services:
   web:
     build: .
+    image: demo-api
     container_name: aspnet-core-webapi
     restart: always
+    deploy:
+      replicas: 1
     environment:
       - JWT_ISS=http://localhost:8181/api/signup
       - JWT_AUD=demo.api
@@ -25,38 +29,50 @@ services:
       - mysqldb
       - rabbitmq
       - redis
-  healthchecks-ui:
+
+  healthapp:
     image: xabarilcoding/healthchecksui
-    container_name: healthchecks-ui
+    container_name: healthapp
     restart: always
+    # environment:
+    #   HealthChecks-UI_HealthChecks_0_Name: "web"
+    #   HealthChecks-UI_HealthChecks_0_Uri: "http://web/healthz"
     ports:
       - "8083:80"
-    environment:
-      "HealthChecks-UI:HealthChecks:0:Name": "aspnet-core-webapi"
-      "HealthChecks-UI:HealthChecks:0:Uri": "http://aspnet-core-webapi/healthz"
-    depends_on:
-      - web
+
   mongodb:
     image: mongo
     container_name: "mongodb"
     ports:
       - "27017:27017"
+
   mysqldb:
     image: mysql:5
     command: --default-authentication-plugin=mysql_native_password
     container_name: "mysqldb"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
+
   redis:
     image: redis
     container_name: "redis"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
     ports:
       - "6379:6379"
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: 'rabbitmq'
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
     ports:
       - "5672:5672"
       - "15672:15672"
