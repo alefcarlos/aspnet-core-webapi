@@ -13,7 +13,7 @@ namespace Demo.Core.Services
     {
         private readonly ICharacterRepository _characterRepository;
         private readonly IFamilyRepository _familyRepository;
-        private readonly IDistributedCache  _redisProvider;
+        private readonly IDistributedCache _redisProvider;
 
         public CharacterServices(ICharacterRepository characterRepository, IFamilyRepository familyRepository, IDistributedCache redisProvider)
         {

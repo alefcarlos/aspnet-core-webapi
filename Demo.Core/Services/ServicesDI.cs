@@ -16,7 +16,7 @@ namespace Demo.Core.Services
             services.AddSingleton<IValuesServices, ValuesServices>();
 
             services.AddScoped<ICharacterServices, CharacterServices>();
-            
+
             //GraphQL Services
             services.AddGraphServices();
 

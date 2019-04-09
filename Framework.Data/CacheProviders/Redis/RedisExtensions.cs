@@ -17,7 +17,7 @@ namespace Framework.Data.CacheProviders
 
             services.AddDistributedRedisCache(config =>
             {
-                config.ConfigurationOptions= options;
+                config.ConfigurationOptions = options;
             });
 
             //services.AddHealthChecks()

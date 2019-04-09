@@ -41,7 +41,7 @@ namespace Demo.Core.Data.ApiClient.Google
             if (!obj.status.Equals("OK", StringComparison.InvariantCultureIgnoreCase))
                 throw new HttpResponseException(new HttpResponseMessage
                 {
-                    StatusCode =  HttpStatusCode.NotFound,
+                    StatusCode = HttpStatusCode.NotFound,
                     ReasonPhrase = "Endereço não encontrado"
                 });
 

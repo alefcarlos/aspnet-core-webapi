@@ -7,6 +7,6 @@ namespace Framework.MessageBroker.RabbitMQ
     /// </summary>
     public interface IRabbitMQSubscriber : ISubscriber, IDisposable
     {
-        
+
     }
 }

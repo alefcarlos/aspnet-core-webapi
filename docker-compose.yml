@@ -19,11 +19,23 @@ services:
       - mysqldb
       - rabbitmq
       - redis
+      - healthchecks-ui
     depends_on:
       - mongodb
       - mysqldb
       - rabbitmq
       - redis
+  healthchecks-ui:
+    image: xabarilcoding/healthchecksui
+    container_name: healthchecks-ui
+    restart: always
+    ports:
+      - "8083:80"
+    environment:
+      "HealthChecks-UI:HealthChecks:0:Name": "aspnet-core-webapi"
+      "HealthChecks-UI:HealthChecks:0:Uri": "http://aspnet-core-webapi/healthz"
+    depends_on:
+      - web
   mongodb:
     image: mongo
     container_name: "mongodb"

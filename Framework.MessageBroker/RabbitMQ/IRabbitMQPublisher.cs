@@ -5,6 +5,6 @@ namespace Framework.MessageBroker.RabbitMQ
     /// </summary>
     public interface IRabbitMQPublisher : IPublisher
     {
-         
+
     }
 }
