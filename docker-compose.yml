@@ -23,7 +23,7 @@ services:
       - mysqldb
       - rabbitmq
       - redis
-      - healthchecks-ui
+      - healthapp
     depends_on:
       - mongodb
       - mysqldb
