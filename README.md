@@ -119,7 +119,7 @@ docker-compose build
 e começar a brincadeira criando o namespace que vamos utilizar:
 
 ```bash
-kubectl create -f k8s/namespace.yaml
+kubectl create namespace demo
 ```
 
 e então criar o stack:
@@ -172,6 +172,11 @@ replicaset.apps/redis-d56fc6bdf        1         1         1         13s
 replicaset.apps/web-78bc8955d4         1         1         0         13s
 ```
 
+Para remover a stack:
+
+```bash
+docker stack rm appstack --namespace demo
+```
 
 ## SonarQube
 
