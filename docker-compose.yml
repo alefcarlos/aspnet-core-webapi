@@ -35,8 +35,6 @@ services:
     container_name: healthapp
     restart: always
     environment:
-      # HealthChecks-UI:HealthChecks:0:Name: web
-      # HealthChecks-UI:HealthChecks:0:Uri: http://web/healthz
       HealthChecks-UI_HealthChecks_0_Name: web
       HealthChecks-UI_HealthChecks_0_Uri: http://web/healthz
     ports:
