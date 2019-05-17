@@ -1,9 +1,8 @@
-﻿using Demo.Core.Data.MySql;
+﻿using System;
+using Demo.Core.Data.MySql;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Demo.API
 {
