@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Demo.Consumer.HandleMessages.Tasks
 {
-    public class TesteMessageHandlerTask : IHostedService
+    public class TesteMessageHandlerTask : BackgroundService
     {
         private readonly IRabbitMQSubscriber _subscriber;
         private readonly ILogger _logger;
@@ -18,9 +18,13 @@ namespace Demo.Consumer.HandleMessages.Tasks
             _logger = logger;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public override void Dispose(){
+            _subscriber.Dispose();
+            base.Dispose();
+        }
+
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            //Realizar bind do consummo da fila
             _subscriber.StartConsume<TesteMessage>(ConsumeTesteMessage);
             return Task.CompletedTask;
         }
@@ -29,12 +33,6 @@ namespace Demo.Consumer.HandleMessages.Tasks
         {
             _logger.LogInformation($"ConsumeTesteMessage, Campo = {message.Campo}");
             return true;
-        }
-
-        public Task StopAsync(CancellationToken cancellationToken)
-        {
-            _subscriber.Dispose();
-            return Task.CompletedTask;
         }
     }
 }
