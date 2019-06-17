@@ -15,13 +15,13 @@ namespace Framework.Data.CacheProviders
             if (!options.DefaultDatabase.HasValue)
                 throw new ArgumentNullException("DefaultDatabase", "É obrigatório informar o database padrão do Redis.");
 
-            services.AddDistributedRedisCache(config =>
+            services.AddStackExchangeRedisCache(config =>
             {
                 config.ConfigurationOptions = options;
             });
 
-            //services.AddHealthChecks()
-            //    .AddRedis(redisUri, "redis", tags: new string[] { "db", "redis", "cache" });
+            services.AddHealthChecks()
+               .AddRedis(redisUri, "redis", tags: new string[] { "db", "redis", "cache" });
 
             return services;
         }
