@@ -1,4 +1,5 @@
-﻿using dotenv.net;
+﻿using App.Metrics;
+using dotenv.net;
 using FluentValidation.AspNetCore;
 using Framework.Core.Serializer;
 using Framework.WebAPI.Documetation;
@@ -52,7 +53,7 @@ namespace Framework.WebAPI.Hosting
             services.AddDocumentation();
 
             services.AddSingleton<JsonSerializerCommon>();
-
+            services.AddMetrics();
             AfterConfigureServices(services);
         }
 
