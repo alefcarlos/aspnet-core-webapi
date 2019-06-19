@@ -12,6 +12,7 @@ Técnicas
 - [x] HealthCheck - Utilizando a lib [Xabaril/AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
   - Acessar o endpoint /healthz da api no browser
   - Acessar a url http://localhost:8003/healthchecks-ui para visualizar um painel com o monitoramento, disponível somente com docker-compose
+- [x] App.Metrics + Prometheus + Grafana
 - [x] FluentValidation
 - [x] GraphQL
     - Acessar a url /ui/playground no browser
