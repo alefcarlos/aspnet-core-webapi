@@ -18,7 +18,7 @@ namespace Demo.API
         {
             Metrics = AppMetrics.CreateDefaultBuilder()
                 .OutputMetrics.AsPrometheusPlainText()
-                .OutputMetrics.AsPrometheusProtobuf()
+                // .OutputMetrics.AsPrometheusProtobuf()
                 .Build();
 
 
@@ -54,8 +54,8 @@ namespace Demo.API
                             {
                                 options.EndpointOptions = endpointsOptions =>
                                 {
-                                    endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
-                                    endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusProtobufOutputFormatter>().First();
+                                    // endpointsOptions.MetricsTextEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
+                                    endpointsOptions.MetricsEndpointOutputFormatter = Metrics.OutputMetricsFormatters.OfType<MetricsPrometheusTextOutputFormatter>().First();
                                 };
                             })
                 .UseStartup<Startup>();
