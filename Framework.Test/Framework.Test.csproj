@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Bogus" Version="26.0.2" />
+      <PackageReference Include="Bogus" Version="27.0.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
       <PackageReference Include="dotenv.net" Version="1.0.4" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />

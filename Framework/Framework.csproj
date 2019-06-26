@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +11,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.System" Version="2.2.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="2.2.3" />
     <PackageReference Include="dotenv.net" Version="1.0.4" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.2.2" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
