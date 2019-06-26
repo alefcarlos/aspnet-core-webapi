@@ -1,5 +1,6 @@
 ﻿using Demo.Core.Data.MongoDB;
 using Demo.Core.Data.MySql;
+using Demo.Core.ExternalServices;
 using Demo.Core.GraphQL;
 using Demo.Core.Services;
 using Demo.Core.Validations;
@@ -33,6 +34,7 @@ namespace Demo.API
             services.AddMongoRepositories();
 
             services.AddMySql();
+            services.AddExternalServices();
 
             //GraphQL
             services.AddGraphQLTypes();

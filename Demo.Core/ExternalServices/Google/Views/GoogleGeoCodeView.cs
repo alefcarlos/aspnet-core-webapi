@@ -1,4 +1,4 @@
-﻿namespace Demo.Core.Data.ApiClient.Google.Views
+﻿namespace Demo.Core.ExternalServices.Google
 {
     public class GoogleGeoCodeView
     {

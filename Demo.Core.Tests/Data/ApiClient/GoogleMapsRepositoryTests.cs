@@ -1,7 +1,5 @@
-using System.Threading.Tasks;
-using Bogus;
-using Demo.Core.Data.ApiClient.Google;
-using Demo.Core.Data.ApiClient.Google.Views;
+﻿using System.Threading.Tasks;
+using Demo.Core.ExternalServices.Google;
 using RichardSzalay.MockHttp;
 using Shouldly;
 using Xunit;
