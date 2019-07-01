@@ -14,7 +14,7 @@ namespace Demo.Core.Data.MySql
 
         public DbzMySqlContext(DbContextOptions<DbzMySqlContext> options) : base(options)
         {
-            //Database.Migrate();
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
