@@ -1,15 +1,15 @@
 using System;
-using Framework.Core.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
+using Microsoft.Extensions.Configuration;
 
 namespace Framework.Data.CacheProviders
 {
     public static class RedisExtensions
     {
-        public static IServiceCollection AddRedisCache(this IServiceCollection services)
+        public static IServiceCollection AddRedisCache(this IServiceCollection services, IConfiguration configuration)
         {
-            var redisUri = CommonHelpers.GetValueFromEnv<string>("REDIS_URI");
+            var redisUri = configuration.GetConnectionString("Redis");
             var options = ConfigurationOptions.Parse(redisUri);
 
             if (!options.DefaultDatabase.HasValue)

@@ -18,7 +18,8 @@ namespace Demo.Consumer.HandleMessages.Tasks
             _logger = logger;
         }
 
-        public override void Dispose(){
+        public override void Dispose()
+        {
             _subscriber.Dispose();
             base.Dispose();
         }

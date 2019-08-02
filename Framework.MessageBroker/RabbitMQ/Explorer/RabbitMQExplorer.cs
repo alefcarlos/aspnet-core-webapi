@@ -1,10 +1,10 @@
-﻿using Framework.Core.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Framework.MessageBroker.RabbitMQ.Explorer
 {
@@ -13,9 +13,9 @@ namespace Framework.MessageBroker.RabbitMQ.Explorer
         private readonly HttpClient _client;
         private readonly Uri _rabbitMQURI;
 
-        public RabbitMQExplorer(HttpClient client)
+        public RabbitMQExplorer(HttpClient client, IConfiguration configuration)
         {
-            var uri = CommonHelpers.GetValueFromEnv<string>("RABBITMQ_URI");
+            var uri = configuration.GetConnectionString("RabbitMQ");
             _rabbitMQURI = new Uri(uri);
 
             _client = client;

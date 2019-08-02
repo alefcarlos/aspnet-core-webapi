@@ -2,8 +2,9 @@
 using System.Net;
 using System.Net.Http;
 using Demo.Core.ExternalServices.Google;
-using Framework.Core.Helpers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Extensions.Http;
 using Polly.Timeout;
@@ -17,13 +18,17 @@ namespace Demo.Core.ExternalServices
         /// Adiciona todas as dependências de requisições http
         /// </summary>
         /// <param name="services"></param>
+        /// <param name="configuration"></param>
         /// <returns></returns>
-        public static IServiceCollection AddExternalServices(this IServiceCollection services)
+        public static IServiceCollection AddExternalServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<GoogleApiConfiguration>(configuration.GetSection(nameof(GoogleApiConfiguration)));
+            var configs = services.BuildServiceProvider().GetRequiredService<IOptions<GoogleApiConfiguration>>().Value;
+
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(10);
 
             services.AddRefitClient<IGoogleMapsAPI>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri(CommonHelpers.GetValueFromEnv<string>("GOOGLE_GEOCODE_URI")))
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(configs.GeoCodeURI))
                 .AddPolicyHandler(GetRetryPolicy())
                 .AddPolicyHandler(timeoutPolicy);
 

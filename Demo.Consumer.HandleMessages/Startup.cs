@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Demo.Consumer.HandleMessages.Tasks;
-using dotenv.net;
 using Framework.Core.Serializer;
 using Framework.MessageBroker.RabbitMQ;
 using Framework.WebAPI.HealthCheck;
@@ -17,9 +16,6 @@ namespace Demo.Consumer.HandleMessages
 
         public Startup(IConfiguration configuration)
         {
-            if (File.Exists(".env"))
-                DotEnv.Config();
-
             Configuration = configuration;
         }
 
@@ -28,7 +24,7 @@ namespace Demo.Consumer.HandleMessages
             services.AddSingleton<JsonSerializerCommon>();
             services.AddHealthCheck();
 
-            services.AddRabbitBroker("demo.consumer");
+            services.AddRabbitBroker("demo.consumer", Configuration);
             services.AddHostedService<TesteMessageHandlerTask>();
         }
 

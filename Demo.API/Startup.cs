@@ -30,21 +30,21 @@ namespace Demo.API
             services.AddServices();
 
             //Repositories
-            services.AddMongoDB();
+            services.AddMongoDB(Configuration);
             services.AddMongoRepositories();
 
-            services.AddMySql();
-            services.AddExternalServices();
+            services.AddMySql(Configuration);
+            services.AddExternalServices(Configuration);
 
             //GraphQL
             services.AddGraphQLTypes();
 
             //Redis
-            services.AddRedisCache();
+            services.AddRedisCache(Configuration);
 
 
             //RabbitMQ
-            services.AddRabbitBroker("demo.api");
+            services.AddRabbitBroker("demo.api", Configuration);
         }
 
         public override void BeforeConfigureApp(IApplicationBuilder app, IHostingEnvironment env)

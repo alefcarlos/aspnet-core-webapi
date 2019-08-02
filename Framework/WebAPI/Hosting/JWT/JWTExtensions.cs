@@ -1,7 +1,8 @@
-﻿using Framework.Core.Helpers;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 
@@ -9,7 +10,7 @@ namespace Framework.WebAPI.Hosting.JWT
 {
     public static class JWTExtensions
     {
-        public static IServiceCollection AddSecurity(this IServiceCollection services)
+        public static IServiceCollection AddSecurity(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddCors(options =>
             {
@@ -23,14 +24,16 @@ namespace Framework.WebAPI.Hosting.JWT
             var signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
 
-            var tokenConfigurations = new TokenConfigurations
-            {
-                Audience = CommonHelpers.GetValueFromEnv<string>("JWT_AUD"),
-                Seconds = CommonHelpers.GetValueFromEnv<int>("JWT_EXPIRATION"),
-                Issuer = CommonHelpers.GetValueFromEnv<string>("JWT_ISS")
-            };
+            services.Configure<TokenConfigurations>(configuration.GetSection(nameof(TokenConfigurations)));
+            var tokenConfigurations = services.BuildServiceProvider().GetRequiredService<IOptions<TokenConfigurations>>().Value;
+            // var tokenConfigurations = new TokenConfigurations
+            // {
+            //     Audience = CommonHelpers.GetValueFromEnv<string>("JWT_AUD"),
+            //     Seconds = CommonHelpers.GetValueFromEnv<int>("JWT_EXPIRATION"),
+            //     Issuer = CommonHelpers.GetValueFromEnv<string>("JWT_ISS")
+            // };
 
-            services.AddSingleton(tokenConfigurations);
+            // services.AddSingleton(tokenConfigurations);
 
             services.AddAuthentication(authOptions =>
             {

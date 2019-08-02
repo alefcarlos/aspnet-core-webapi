@@ -1,4 +1,3 @@
-using Framework.Core.Helpers;
 using RabbitMQ.Client;
 using System;
 
@@ -13,12 +12,10 @@ namespace Framework.MessageBroker.RabbitMQ
         private bool disposed;
         private ConnectionFactory factory = new ConnectionFactory();
 
-        public RabbitMQConnectionWrapper(string appName)
+        public RabbitMQConnectionWrapper(string appName, string uri)
         {
             disposed = false;
             _appName = appName;
-
-            var uri = CommonHelpers.GetValueFromEnv<string>("RABBITMQ_URI");
 
             factory.Uri = new Uri(uri);
             factory.AutomaticRecoveryEnabled = true;

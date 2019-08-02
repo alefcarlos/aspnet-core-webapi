@@ -1,4 +1,4 @@
-﻿using Framework.Core.Helpers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 
@@ -6,9 +6,9 @@ namespace Framework.Data.MongoDB
 {
     public static class MongoDBExtensions
     {
-        public static IServiceCollection AddMongoDB(this IServiceCollection services)
+        public static IServiceCollection AddMongoDB(this IServiceCollection services, IConfiguration configuration)
         {
-            var mongoUri = CommonHelpers.GetValueFromEnv<string>("MONGO_URI");
+            var mongoUri = configuration.GetConnectionString("MongoDB");
 
             // MongoClient (Singleton)
             var mongoUrl = new MongoUrl(mongoUri);

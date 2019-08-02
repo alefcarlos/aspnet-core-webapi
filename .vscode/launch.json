@@ -1,9 +1,9 @@
 {
-   // Use IntelliSense to find out which attributes exist for C# debugging
-   // Use hover for the description of the existing attributes
-   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-   "version": "0.2.0",
-   "configurations": [
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
         {
             "name": "Demo.API",
             "type": "coreclr",
@@ -30,7 +30,16 @@
                 }
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "GoogleApiConfiguration:GeoCodeURI": "https://maps.googleapis.com/maps/api/geocode",
+                "GoogleApiConfiguration:MapsKey": "AIzaSyD6DxZlq_qWFSYs640jw9k_IvFltjM-Uew",
+                "TokenConfigurations:Audience": "http://localhost:5000/api/signup",
+                "TokenConfigurations:Issuer": "demo.api",
+                "TokenConfigurations:Seconds": "1800",
+                "ConnectionStrings:MongoDB": "mongodb://localhost:27017/demodb",
+                "ConnectionStrings:MYSQL": "Server=localhost;Database=dbz;User=root;Password=root;",
+                "ConnectionStrings:RabbitMQ": "amqp://guest:guest@localhost",
+                "ConnectionStrings:Redis": "localhost,name=Demo.Api,defaultDatabase=1"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -52,6 +61,6 @@
             "cwd": "${workspaceFolder}/Demo.Consumer.HandleMessages",
             "stopAtEntry": false,
             "console": "internalConsole"
-        }
-    ,]
+        },
+    ]
 }

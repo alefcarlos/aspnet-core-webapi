@@ -1,6 +1,6 @@
-using Framework.Core.Helpers;
 using Framework.Core.Serializer;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -14,13 +14,18 @@ namespace Framework.MessageBroker.RabbitMQ
         private readonly JsonSerializerCommon _serializer;
         private readonly ILogger _logger;
 
+        private readonly RabbitMQSettings _settings;
         private IModel _channel;
 
-        public RabbitMQSubscriber(RabbitMQConnectionWrapper connection, JsonSerializerCommon serializer, ILogger<RabbitMQSubscriber> logger)
+        public RabbitMQSubscriber(RabbitMQConnectionWrapper connection,
+        JsonSerializerCommon serializer,
+        ILogger<RabbitMQSubscriber> logger,
+        IOptions<RabbitMQSettings> settings)
         {
             _connection = connection.Connection;
             _serializer = serializer;
             _logger = logger;
+            _settings = settings.Value;
         }
 
         private T DefaultMsgBinder<T>(byte[] data)
@@ -47,7 +52,7 @@ namespace Framework.MessageBroker.RabbitMQ
             _channel.CreateModels(options, true);
 
             //Verificar se existe env configurando o limite de mensagens
-            var limit = CommonHelpers.GetValueFromEnv<ushort>("RABBIT_QOS", false);
+            var limit = _settings.QOS;
 
             if (limit > 0)
                 _channel.BasicQos(0, limit, false); //Limtiar por consumer

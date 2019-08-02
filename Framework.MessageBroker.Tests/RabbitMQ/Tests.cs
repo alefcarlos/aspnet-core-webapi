@@ -17,15 +17,15 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
 
         public Tests()
         {
-            _publisher = Scope.ServiceProvider.GetRequiredService<IRabbitMQPublisher>();
-            _rabbitExplorer = Scope.ServiceProvider.GetRequiredService<IRabbitMQExplorer>();
+            _publisher = GetService<IRabbitMQPublisher>();
+            _rabbitExplorer = GetService<IRabbitMQExplorer>();
         }
 
         [Fact]
         public async Task PublisheAndConsumeDefault()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             var message = new DefaultMessage
             {
@@ -59,7 +59,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
         public async Task PublisheAndConsumeNamed()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             var message = new NamedMessage
             {
@@ -94,7 +94,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
         public async Task PublisheAndConsumeDirectExchange()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             var message = new DirectMessage
             {
@@ -137,7 +137,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
         public async Task PublisheAndConsumeDefaultGeneratedName()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             var message = new DefaultGeneratedNameMessage
             {
@@ -172,7 +172,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
         public async Task PublisheAndConsumeDirectGeneratedName()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             var message = new DirectedGeneratedNameMessage
             {
@@ -215,7 +215,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
         public async Task PublisheAndConsumeDefaultRejectedMessage()
         {
             //Arrange
-            var subscriber = Scope.ServiceProvider.GetRequiredService<IRabbitMQSubscriber>();
+            var subscriber = GetService<IRabbitMQSubscriber>();
             bool publishWithSuccess = false;
             int count = 0;
 
@@ -223,7 +223,7 @@ namespace Framework.MessageBroker.Tests.RabbitMQ
             {
                 Campo = "PublisheAndConsumeDefaultRejectedMessage"
             };
-            var options = RabbitMQExchangeOptions.Build<DefaultMessage>();
+            var options = RabbitMQExchangeOptions.Build<DefaultRejectedMessage>();
 
             //Act
             subscriber.StartConsume<DefaultRejectedMessage>((msg) =>

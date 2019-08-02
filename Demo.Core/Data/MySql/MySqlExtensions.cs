@@ -1,7 +1,7 @@
 ﻿using Demo.Core.Data.MySql.Repositories;
 using Framework.Data.MySql;
-using Framework.Core.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
@@ -10,9 +10,9 @@ namespace Demo.Core.Data.MySql
 {
     public static class MySqlExtensions
     {
-        public static IServiceCollection AddMySql(this IServiceCollection services)
+        public static IServiceCollection AddMySql(this IServiceCollection services, IConfiguration configuration)
         {
-            var connection = CommonHelpers.GetValueFromEnv<string>("MYSQL_CONNECTION");
+            var connection = configuration.GetConnectionString("MYSQL");
 
             services.AddDbContextPool<DbzMySqlContext>(options =>
             {
@@ -26,7 +26,7 @@ namespace Demo.Core.Data.MySql
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IFamilyRepository, FamilyRepository>();
 
-            services.AddMySqlHealthCheck(connection);
+            services.AddMySqlHealthCheck(configuration);
 
             return services;
         }

@@ -1,5 +1,4 @@
 ﻿using App.Metrics;
-using dotenv.net;
 using FluentValidation.AspNetCore;
 using Framework.Core.Serializer;
 using Framework.WebAPI.Documetation;
@@ -25,18 +24,15 @@ namespace Framework.WebAPI.Hosting
     {
         public BaseStartup(IConfiguration configuration)
         {
-            if (File.Exists(".env"))
-                DotEnv.Config();
-
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        protected IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSecurity();
+            services.AddSecurity(Configuration);
 
             services.AddCustomCors();
 

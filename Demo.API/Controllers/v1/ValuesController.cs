@@ -2,11 +2,11 @@
 using Demo.Core.Contracts.Values;
 using Demo.Core.ExternalServices.Google;
 using Demo.Core.Services;
-using Framework.Core.Helpers;
 using Framework.WebAPI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Demo.API.Controllers
 {
@@ -21,11 +21,13 @@ namespace Demo.API.Controllers
     {
         private readonly IValuesServices _services;
         private readonly IGoogleMapsAPI _mapsAPI;
+        private readonly GoogleApiConfiguration _googleSettings;
 
-        public ValuesController(IValuesServices services, IGoogleMapsAPI mapsAPI)
+        public ValuesController(IValuesServices services, IGoogleMapsAPI mapsAPI, IOptions<GoogleApiConfiguration> googleSettings)
         {
             _services = services;
             _mapsAPI = mapsAPI;
+            _googleSettings = googleSettings.Value;
         }
 
         [HttpGet]
@@ -47,7 +49,7 @@ namespace Demo.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> SearchCEP(string cep)
         {
-            return Ok(await _mapsAPI.SearchAsync(cep, CommonHelpers.GetValueFromEnv<string>("GOOGLE_MAPS_KEY")));
+            return Ok(await _mapsAPI.SearchAsync(cep, _googleSettings.MapsKey));
         }
     }
 }
