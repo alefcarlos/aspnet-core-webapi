@@ -13,20 +13,24 @@ namespace Framework.Test
         {
             //Configuration
             var configurationBuilder = new ConfigurationBuilder()
-                .AddEnvironmentVariables()
+            .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json", optional: false)
                 .Build();
 
             Configuration = configurationBuilder;
 
             var services = new ServiceCollection();
+            
+            services.AddSingleton(Configuration);
+
             services.AddSingleton<JsonSerializerCommon>();
             services.AddLogging(opt => opt.AddConsole());
-
-            ServiceProvider = services.BuildServiceProvider();
 
             var startup = Activator.CreateInstance<T>();
 
             startup.ConfigureServices(services, Configuration);
+
+            ServiceProvider = services.BuildServiceProvider();
         }
 
         private IServiceProvider ServiceProvider { get; }

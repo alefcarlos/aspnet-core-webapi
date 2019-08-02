@@ -16,6 +16,7 @@ namespace Framework.MessageBroker.RabbitMQ.Explorer
         public RabbitMQExplorer(HttpClient client, IConfiguration configuration)
         {
             var uri = configuration.GetConnectionString("RabbitMQ");
+            
             _rabbitMQURI = new Uri(uri);
 
             _client = client;
