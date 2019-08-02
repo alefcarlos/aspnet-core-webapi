@@ -12,7 +12,9 @@ namespace Framework.Test
             ServiceProvider = ConfigureService();
         }
 
-        protected readonly IServiceProvider ServiceProvider;
+        private IServiceProvider ServiceProvider {get;}
+
+        public IServiceScope Scope => ServiceProvider.CreateScope();
 
         private IServiceProvider ConfigureService()
         {
@@ -25,11 +27,6 @@ namespace Framework.Test
             startup.ConfigureServices(services);
 
             return services.BuildServiceProvider();
-        }
-
-        public TService GetService<TService>()
-        {
-            return ServiceProvider.GetService<TService>();
         }
     }
 }

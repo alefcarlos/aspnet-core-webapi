@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Demo.Worker
@@ -8,9 +9,13 @@ namespace Demo.Worker
         static void Main(string[] args)
         {
             var startUp = new Startup();
-            var logger = startUp.GetService<ILogger<Program>>();
-            logger.LogInformation("Hello World.");
-            Console.Read();
+
+            using (var scope = startUp.Scope)
+            {
+                var logger = startUp.Scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                logger.LogInformation("Hello World.");
+                Console.Read();
+            }
         }
     }
 }

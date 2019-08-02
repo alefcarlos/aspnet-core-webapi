@@ -11,7 +11,9 @@ namespace Demo.Worker
     {
         public IConfiguration Configuration { get; }
 
-        public ServiceProvider ServiceProvier { get; }
+        private ServiceProvider ServiceProvier { get; }
+
+        public IServiceScope Scope => ServiceProvier.CreateScope();
 
         public Startup()
         {
@@ -52,11 +54,5 @@ namespace Demo.Worker
         public void ConfigureServices(IServiceCollection services)
         {
         }
-
-        /// <summary>
-        /// Obtém um serviço no container de dependências.
-        /// </summary>
-        /// <typeparam name="T">Tipo do serviço.</typeparam>
-        public T GetService<T>() => (T)ServiceProvier.GetService(typeof(T));
     }
 }
