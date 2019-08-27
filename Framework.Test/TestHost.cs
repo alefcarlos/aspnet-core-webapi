@@ -7,9 +7,9 @@ using System.IO;
 
 namespace Framework.Test
 {
-    public abstract class BaseTest<T> where T : TestStartupBase
+    public abstract class TestHost<T> where T : TestStartup
     {
-        public BaseTest()
+        public TestHost()
         {
             //Configuration
             var configurationBuilder = new ConfigurationBuilder()

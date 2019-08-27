@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.MessageBroker.Tests
 {
-    public class Startup : TestStartupBase
+    public class Startup : TestStartup
     {
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {

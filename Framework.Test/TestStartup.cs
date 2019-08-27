@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.Test
 {
-    public abstract class TestStartupBase
+    public abstract class TestStartup
     {
         public abstract void ConfigureServices(IServiceCollection services, IConfiguration configuration);
     }

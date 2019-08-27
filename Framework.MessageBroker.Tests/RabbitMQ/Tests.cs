@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Framework.MessageBroker.Tests.RabbitMQ
 {
-    public class Tests : BaseTest<Startup>
+    public class Tests : TestHost<Startup>
     {
         private readonly IRabbitMQPublisher _publisher;
         private readonly IRabbitMQExplorer _rabbitExplorer;
